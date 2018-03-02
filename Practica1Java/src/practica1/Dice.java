@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practica1;
+package DeepSpace;
 import java.util.Random;
 /**
  *
@@ -80,10 +80,10 @@ public class Dice {
         float prob;
         prob=generator.nextFloat();
         if(prob<FIRSTSHOTPROB){
-            return SPACESTATION;
+            return GameCharacter.SPACESTATION;
         }
         else{
-            return ENEMYSTARSHIP;
+            return GameCharacter.ENEMYSTARSHIP;
         }
     }
     
