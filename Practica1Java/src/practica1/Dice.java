@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package DeepSpace;
 import java.util.Random;
 /**
  *
- * @author JuanAntonio
+ * @author Pedro Pablo Ruiz Huertas y Juan Antonio Villegas Recio
  */
 public class Dice {
     private float NHANGARSPROB;
