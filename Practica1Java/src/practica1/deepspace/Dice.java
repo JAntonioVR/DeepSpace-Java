@@ -22,7 +22,6 @@ public class Dice {
         
         generator=new Random();
         
-        //Inicializar adecuadamente??
     }
     
     public int initWithNHangars(){
