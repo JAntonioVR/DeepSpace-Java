@@ -28,6 +28,18 @@ public class Damage {
         this.nWeapons=d.nWeapons;
     }
     
+    public int getNShields(){
+        return this.nShields;
+    }
+    
+    public int getNWeapons(){
+        return this.nWeapons;
+    }
+    
+    public ArrayList<WeaponType> getWeapons(){
+        return this.weapons;
+    }
+    
     DamageToUI getUIversion(){
         return new DamageToUI(this);
     }
@@ -69,5 +81,13 @@ public class Damage {
             
     }
     
+    public void discardShieldBooster(){
+        if (this.nShields>0)
+            this.nShields--;      
+    }
     
+    public boolean hasNoEffect(){
+        if(nShields==0 && nWeapons==0 && this.weapons.isEmpty())
+             return true;
+        else return false;
 }
