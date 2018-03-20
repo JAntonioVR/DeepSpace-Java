@@ -67,4 +67,11 @@ public class GameUniverse {
         this.currentStation.mountWeapon(i);
     }
     
+    @Override
+    public String toString(){
+        String res="El universo del juego tiene: \n*Indice de la estacion espacial actual= "+currentStationIndex+
+                "\n*"+turns+" turnos, \n*espacion espacial actual:"+currentStation.toString()+"  \n*El enemigo actual es: "
+                +currentEnemy.toString() + ",\nel estado del dado es: " +dice.toString();
+        return res;
+    }
 }
