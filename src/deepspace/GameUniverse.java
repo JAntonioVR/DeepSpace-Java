@@ -59,6 +59,12 @@ public class GameUniverse {
         return new GameUniverseToUI(this.currentStation, this.currentEnemy);
     }
     
+    void mountShieldBooster(int i){
+        this.currentStation.mountShieldBooster(i);
+    }
     
+    void mountWeapon(int i){
+        this.currentStation.mountWeapon(i);
+    }
     
 }
