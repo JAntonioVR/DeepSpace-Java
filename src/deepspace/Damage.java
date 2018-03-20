@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 /**
  *
- * @author Pedro Pablo Ruiz Huertas
+ * @author Pedro Pablo Ruiz Huertas y Juan Antonio Villegas Recio
  */
 public class Damage {
     private int nShields;
