@@ -31,6 +31,10 @@ public class ShieldBooster implements Copyable <ShieldBooster> {
         return uses;
     }
     
+    ShieldToUI getUIversion(){
+        return new ShieldToUI(this);
+    }
+    
     public float useIt(){
         if(uses>0){
             uses--;
@@ -45,10 +49,6 @@ public class ShieldBooster implements Copyable <ShieldBooster> {
                 ", el potenciador del escudo es "+this.getBoost()+
                 " y los usos que le quedan al escudo son "+this.getUses();
         return mensaje;
-    }
-    
-    public ShieldToUI getUIVersion(){
-        return new ShieldToUI(this);
     }
     
     public ShieldBooster copy(){
