@@ -70,4 +70,14 @@ public class EnemyStarShip {
             return ShotResult.DONOTRESIST;
         else return ShotResult.RESIST;
     }
+    
+    @Override
+    public String toString(){
+        String mensaje="El nombre de esta nave enemiga es:"+name+
+                        ",\nel poder del arma de esa nave enemiga es:"+ammoPower+
+                        ",\nel poder del escudo es: "+shieldPower+
+                        ",\nel botin que contiene es:"+loot.toString()+
+                        ",\ny el daño es:"+damage.toString();
+        return mensaje;
+    }
 }
