@@ -26,6 +26,7 @@ public class Damage {
     Damage(Damage d){
         this.nShields=d.nShields;
         this.nWeapons=d.nWeapons;
+        this.weapons=d.weapons;
     }
     
     public int getNShields(){
@@ -90,4 +91,5 @@ public class Damage {
         if(nShields==0 && nWeapons==0 && this.weapons.isEmpty())
              return true;
         else return false;
+    }
 }
