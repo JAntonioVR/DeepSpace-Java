@@ -32,4 +32,42 @@ public class EnemyStarShip {
         this.damage=s.damage;
     }
     
+    public String getName() {
+        return this.name;
+    }
+
+    public float getAmmoPower() {
+        return this.ammoPower;
+    }
+
+    public float getShieldPower() {
+        return this.shieldPower;
+    }
+
+    public Loot getLoot() {
+        return this.loot;
+    }
+
+    public Damage getDamage() {
+        return this.damage;
+    }
+    
+    
+    EnemyToUI getUIversion(){
+        return new EnemyToUI(this);
+    }
+    
+    public float fire(){
+        return this.ammoPower;
+    }
+    
+    public float protection(){
+        return this.shieldPower;
+    }
+    
+    public ShotResult receiveShot(float shot){
+        if(this.shieldPower<shot)
+            return ShotResult.DONOTRESIST;
+        else return ShotResult.RESIST;
+    }
 }
