@@ -92,4 +92,12 @@ public class Damage {
              return true;
         else return false;
     }
+    
+    @Override
+    String toString(){
+        String mensaje="El numero de escudos eliminados ha sido"+nShields+
+                       ",\nel numero de armas eliminadas ha sido"+nWeapons+
+                       ".\ny los tipos de armas eliminadas han sido"+weapons+
+        return mensaje;
+    }
 }
