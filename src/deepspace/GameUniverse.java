@@ -32,39 +32,48 @@ public class GameUniverse {
     }
     
     void discardHangar(){
-        currentStation.discardHangar();
+        if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
+            currentStation.discardHangar();
     }
     
     void discardShieldBooster(int i){
-        currentStation.discardShieldBooster(i);
+        if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
+            currentStation.discardShieldBooster(i);
     }
     
     void discardShieldBoosterInHangar(int i){
-        currentStation.discardShieldBoosterInHangar(i);
+        if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
+            currentStation.discardShieldBoosterInHangar(i);
     }
     
     void discardWeapon(int i){
-        currentStation.discardWeapon(i);
+        if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
+            currentStation.discardWeapon(i);
     }
     
     void discardWeaponInHangar(int i){
-        currentStation.discardWeaponInHangar(i);
+        if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
+            currentStation.discardWeaponInHangar(i);
     }
     
     GameState getState(){
-        return this.gamestate.getState();
+        if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
+            return this.gamestate.getState();
     }
     
     GameUniverseToUI getUIversion(){
-        return new GameUniverseToUI(this.currentStation, this.currentEnemy);
+        if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
+            return new GameUniverseToUI(this.currentStation, this.currentEnemy);
     }
     
     void mountShieldBooster(int i){
-        this.currentStation.mountShieldBooster(i);
+        if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
+            this.currentStation.mountShieldBooster(i);
     }
     
     void mountWeapon(int i){
-        this.currentStation.mountWeapon(i);
+        if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
+            this.currentStation.mountWeapon(i);
     }
     
     @Override
