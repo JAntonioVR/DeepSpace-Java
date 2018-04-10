@@ -35,6 +35,10 @@ public class Weapon implements Copyable <Weapon> {
         return type.getPower();
     }
     
+    WeaponToUI getUIversion(){
+        return new WeaponToUI(this);
+    }
+    
     public float useIt(){
         if(uses>0){
             uses--;
@@ -54,7 +58,7 @@ public class Weapon implements Copyable <Weapon> {
         return mensaje;
     }
     
-    public WeaponToUI getUIVersion(){
+    WeaponToUI getUIVersion(){
         return new WeaponToUI(this);
     }
     

@@ -91,13 +91,11 @@ public class Dice {
         
     }
     
-    public String toString(int nPlayers, float speed){
+    public String toString(){
         String mensaje = "El numero de hangares inicial es "+this.initWithNHangars()+
                 ", el numero de armas inicial es "+this.initWithNWeapons()+
                 ", el numero de escudos inicial "+this.initWithNShields()+
-                ", empieza el jugador "+this.WhoStarts(nPlayers)+
-                ", dispara primero "+this.firstShot()+
-                " y la afirmacion 'la estacion espacial se mueve' es"+this.spaceStationMoves(speed);
+                ", y dispara primero "+this.firstShot();
         return mensaje;
     }
 }

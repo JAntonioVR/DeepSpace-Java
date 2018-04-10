@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 /**
  *
- * @author Pedro Pablo Ruiz Huertas
+ * @author Pedro Pablo Ruiz Huertas y Juan Antonio Villegas Recio
  */
 public class Damage {
     private int nShields;
@@ -26,6 +26,19 @@ public class Damage {
     Damage(Damage d){
         this.nShields=d.nShields;
         this.nWeapons=d.nWeapons;
+        this.weapons=d.weapons;
+    }
+    
+    public int getNShields(){
+        return this.nShields;
+    }
+    
+    public int getNWeapons(){
+        return this.nWeapons;
+    }
+    
+    public ArrayList<WeaponType> getWeapons(){
+        return this.weapons;
     }
     
     DamageToUI getUIversion(){
@@ -69,5 +82,22 @@ public class Damage {
             
     }
     
+    public void discardShieldBooster(){
+        if (this.nShields>0)
+            this.nShields--;      
+    }
     
+    public boolean hasNoEffect(){
+        if(nShields==0 && nWeapons==0 && this.weapons.isEmpty())
+             return true;
+        else return false;
+    }
+    
+    @Override
+    String toString(){
+        String mensaje="El numero de escudos eliminados ha sido"+nShields+
+                       ",\nel numero de armas eliminadas ha sido"+nWeapons+
+                       ".\ny los tipos de armas eliminadas han sido"+weapons+
+        return mensaje;
+    }
 }

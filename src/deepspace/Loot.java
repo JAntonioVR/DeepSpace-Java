@@ -42,6 +42,10 @@ public class Loot {
         return nMedals;
     }
     
+    LootToUI getUIversion(){
+        return new LootToUI(this);
+    }
+    
     public String toString(){
         String mensaje = "El numero de hangares obtenidos es "+this.getNHangars()+
                 ", el numero de armas obtenidos es "+this.getNWeapons()+
