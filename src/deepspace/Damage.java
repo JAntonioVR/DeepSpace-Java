@@ -46,9 +46,65 @@ public class Damage {
     }
     
     public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
-        this.nShields=s.size();
-        this.nWeapons=w.size();
-        return this;
+        int minShields=nShields;
+        if (nShields>s.size())
+            minShields=s.size();
+        
+        if (weapons.isEmpty()){
+            int minWeapons=nWeapons;
+            if (nWeapons>w.size())
+                minWeapons=w.size();
+     
+            return new Damage(minWeapons, minShields);
+        }
+        else {
+            ArrayList<WeaponType> tipos= new ArrayList<WeaponType>();
+            int laserWeapons=0, missileWeapons=0, plasmaWeapons=0;
+            int laserW=0, missileW=0, plasmaW=0;
+            int i;
+            
+            
+            for (i=0; i<weapons.size(); i++){
+                if (weapons.get(i)==WeaponType.LASER)
+                    laserWeapons++;
+                if (weapons.get(i)==WeaponType.MISSILE)
+                    missileWeapons++;
+                if (weapons.get(i)==WeaponType.PLASMA)
+                    plasmaWeapons++;
+            }
+            
+            for (i=0; i<weapons.size(); i++){
+                if (w.get(i).getType()==WeaponType.LASER)
+                    laserW++;
+                if (w.get(i).getType()==WeaponType.MISSILE)
+                    missileW++;
+                if (w.get(i).getType()==WeaponType.PLASMA)
+                    plasmaW++;
+            }
+            
+            int minWeaponsLaser=laserWeapons;
+            if(laserWeapons>laserW)
+                minWeaponsLaser=laserW;
+            
+            int minWeaponsMissile=missileWeapons;
+            if(missileWeapons>missileW)
+                minWeaponsMissile=missileW;
+            
+            int minWeaponsPlasma=plasmaWeapons;
+            if(plasmaWeapons>plasmaW)
+                minWeaponsPlasma=laserW;
+            
+            for (i=0; i<minWeaponsLaser; i++) {
+                tipos.add(WeaponType.LASER);
+            }
+            for (i=0; i<minWeaponsMissile; i++) {
+                tipos.add(WeaponType.MISSILE);
+            }
+            for (i=0; i<minWeaponsPlasma; i++) {
+                tipos.add(WeaponType.PLASMA);
+            }
+            return new Damage(tipos, minShields);
+        }
     }
     
     private int arrayContainsType(ArrayList<Weapon> w, WeaponType t){
@@ -97,7 +153,7 @@ public class Damage {
     public String toString(){
         String mensaje="El numero de escudos eliminados ha sido"+nShields+
                        ",\nel numero de armas eliminadas ha sido"+nWeapons+
-                       ".\ny los tipos de armas eliminadas han sido"+weapons+
+                       ".\ny los tipos de armas eliminadas han sido"+weapons;
         return mensaje;
     }
 }
