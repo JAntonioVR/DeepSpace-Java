@@ -1,15 +1,11 @@
 
 package deepspace;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-
 /**
  *
  * @author Pedro Pablo Ruiz Huertas y Juan Antonio Villegas Recio
  */
-public class EnemyStarShip {
+public class EnemyStarShip implements Copyable <EnemyStarShip> {
     private float ammoPower;
     private String name;
     private float shieldPower;
@@ -79,5 +75,8 @@ public class EnemyStarShip {
                         ",\nel botin que contiene es:"+loot.toString()+
                         ",\ny el daño es:"+damage.toString();
         return mensaje;
+    }
+    public EnemyStarShip copy(){
+        return new EnemyStarShip(this);
     }
 }
