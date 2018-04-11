@@ -58,7 +58,7 @@ public class Damage {
             return new Damage(minWeapons, minShields);
         }
         else {
-            ArrayList<WeaponType> tipos= new ArrayList<WeaponType>();
+            ArrayList<WeaponType> tipos= new ArrayList<>();
             int laserWeapons=0, missileWeapons=0, plasmaWeapons=0;
             int laserW=0, missileW=0, plasmaW=0;
             int i;
@@ -144,7 +144,7 @@ public class Damage {
     }
     
     public boolean hasNoEffect(){
-        if(nShields==0 && nWeapons==0 && this.weapons.isEmpty())
+        if(nShields==0 && nWeapons==0 && weapons.isEmpty())
              return true;
         else return false;
     }
