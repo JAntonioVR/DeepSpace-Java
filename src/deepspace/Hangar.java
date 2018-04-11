@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author Pedro Pablo Ruiz Huertas y Juan Antonio Villegas Recio
  */
-public class Hangar {
+public class Hangar implements Copyable <Hangar> {
     private int maxElements;
     private ArrayList<ShieldBooster> shieldBoosters;
     private ArrayList<Weapon> weapons;
@@ -73,9 +73,8 @@ public class Hangar {
         return res;
     }
     
-    
-    
-    
-    
+    public Hangar copy(){
+        return new Hangar(this);
+    }
     
 }
