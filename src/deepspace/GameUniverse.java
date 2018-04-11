@@ -57,13 +57,11 @@ public class GameUniverse {
     }
     
     GameState getState(){
-        if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
-            return this.gamestate.getState();
+        return this.gamestate.getState();
     }
     
     GameUniverseToUI getUIversion(){
-        if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
-            return new GameUniverseToUI(this.currentStation, this.currentEnemy);
+        return new GameUniverseToUI(this.currentStation, this.currentEnemy);
     }
     
     void mountShieldBooster(int i){
