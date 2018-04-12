@@ -46,8 +46,8 @@ public class ShieldBooster implements Copyable <ShieldBooster> {
     public String toString(){
         String mensaje;
         mensaje = "El nombre del escudo es "+this.name+
-                ", el potenciador del escudo es "+this.getBoost()+
-                " y los usos que le quedan al escudo son "+this.getUses();
+                ", \nel potenciador del escudo es "+this.getBoost()+
+                " y \nlos usos que le quedan al escudo son "+this.getUses();
         return mensaje;
     }
     

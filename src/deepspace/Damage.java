@@ -16,10 +16,12 @@ public class Damage {
     Damage(int w, int s){
         this.nShields=s;
         this.nWeapons=w;
+        this.weapons=new ArrayList<>();
     }
     
     Damage(ArrayList<WeaponType> wl, int s){
         this.nShields=s;
+        this.nWeapons=0;
         this.weapons=wl;        
     } 
     
@@ -50,14 +52,7 @@ public class Damage {
         if (nShields>s.size())
             minShields=s.size();
         
-        if (weapons.isEmpty()){
-            int minWeapons=nWeapons;
-            if (nWeapons>w.size())
-                minWeapons=w.size();
-     
-            return new Damage(minWeapons, minShields);
-        }
-        else {
+        if (!weapons.isEmpty()){
             ArrayList<WeaponType> tipos= new ArrayList<>();
             int laserWeapons=0, missileWeapons=0, plasmaWeapons=0;
             int laserW=0, missileW=0, plasmaW=0;
@@ -73,7 +68,7 @@ public class Damage {
                     plasmaWeapons++;
             }
             
-            for (i=0; i<weapons.size(); i++){
+            for (i=0; i<w.size(); i++){
                 if (w.get(i).getType()==WeaponType.LASER)
                     laserW++;
                 if (w.get(i).getType()==WeaponType.MISSILE)
@@ -104,6 +99,13 @@ public class Damage {
                 tipos.add(WeaponType.PLASMA);
             }
             return new Damage(tipos, minShields);
+        }
+        else {
+            int minWeapons=nWeapons;
+            if (nWeapons>w.size())
+                minWeapons=w.size();
+            
+            return new Damage(minWeapons, minShields);
         }
     }
     
@@ -144,16 +146,14 @@ public class Damage {
     }
     
     public boolean hasNoEffect(){
-        if(nShields==0 && nWeapons==0 && weapons.isEmpty())
-             return true;
-        else return false;
+        return nShields==0 && nWeapons==0 && weapons.isEmpty();
     }
     
     @Override
     public String toString(){
-        String mensaje="El numero de escudos eliminados ha sido"+nShields+
-                       ",\nel numero de armas eliminadas ha sido"+nWeapons+
-                       ".\ny los tipos de armas eliminadas han sido"+weapons;
+        String mensaje="El numero de escudos eliminados ha sido "+nShields+
+                       ",\nel numero de armas eliminadas ha sido "+nWeapons+
+                       ".\ny los tipos de armas eliminadas han sido "+weapons;
         return mensaje;
     }
 }

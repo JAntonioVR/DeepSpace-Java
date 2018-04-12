@@ -21,8 +21,8 @@ public class SpaceStation {
     private int nMedals;
     private float shieldPower;
     private Damage pendingDamage;
-    private ArrayList<Weapon> weapons;
-    private ArrayList<ShieldBooster> shieldBoosters;
+    private ArrayList<Weapon> weapons=new ArrayList<>();
+    private ArrayList<ShieldBooster> shieldBoosters=new ArrayList<>();
     private Hangar hangar;
     
     SpaceStation(String n, SuppliesPackage supplies){
@@ -157,9 +157,12 @@ public class SpaceStation {
     
     public void mountWeapon(int i){
         Weapon aux;
-        if(hangar!=null){
+        if(!hangar.getWeapons().isEmpty()){
             aux=hangar.getWeapons().remove(i);
-            if(aux!=null) weapons.add(aux);
+            if(aux==null) {
+            } else {
+                weapons.add(aux);
+            }
         }
     }
     
@@ -252,7 +255,8 @@ public class SpaceStation {
     
     @Override
     public String toString(){
-        String res="La estacion espacial tiene: \n*Una potencia de disparo de "+ammoPower+
+        String res;
+        res = "La estacion espacial tiene: \n*Una potencia de disparo de "+ammoPower+
                 "\n*"+fuelUnits+" Unidades de combustible \n*"+nMedals+" medallas \n*Una potencia de escudo de "+
                 shieldPower + "\nSu nombre es: " + name + "\nARMAS:\n"+weapons.toString()+"\nPOTENCIADORES DE ESCUDO:\n"+
                 shieldBoosters.toString()+"\nDaño pendiente: "+pendingDamage.toString()+"\nHangar: "+hangar.toString();

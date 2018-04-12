@@ -47,11 +47,11 @@ public class Loot {
     }
     
     public String toString(){
-        String mensaje = "El numero de hangares obtenidos es "+this.getNHangars()+
-                ", el numero de armas obtenidos es "+this.getNWeapons()+
-                ", el numero de escudos obtenidos es "+this.getNShields()+
-                ", el numero de hangares obtenidos es "+this.getNHangars()+
-                " y el numero de medallas conseguidas es "+this.getNMedals();
+        String mensaje = "El numero de hangares del botin es "+this.getNHangars()+
+                ", el numero de armas del botin es "+this.getNWeapons()+
+                ", el numero de escudos del botin es "+this.getNShields()+
+                ", el numero de hangares del botin es "+this.getNHangars()+
+                " y el numero de medallas del botin es "+this.getNMedals();
         return mensaje;
     }
     

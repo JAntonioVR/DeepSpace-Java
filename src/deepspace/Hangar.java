@@ -9,14 +9,16 @@ import java.util.ArrayList;
  */
 public class Hangar implements Copyable <Hangar> {
     private int maxElements;
-    private ArrayList<ShieldBooster> shieldBoosters;
-    private ArrayList<Weapon> weapons;
+    private ArrayList<ShieldBooster> shieldBoosters=new ArrayList<>();
+    private ArrayList<Weapon> weapons=new ArrayList<>();
     
     
     Hangar(int capacity){
         maxElements=capacity;
     }
     Hangar(Hangar h){
+        weapons=h.weapons;
+        shieldBoosters=h.shieldBoosters;
         maxElements=h.maxElements;
     }
     
@@ -29,11 +31,15 @@ public class Hangar implements Copyable <Hangar> {
     }   
     
     public boolean addWeapon(Weapon w){
-        return weapons.add(w);
+        if (this.spaceAvailable())
+            return weapons.add(w);
+        else return false;
     }
             
     public boolean addShieldBooster(ShieldBooster w){
-        return shieldBoosters.add(w);   
+        if (this.spaceAvailable())
+            return shieldBoosters.add(w);
+        else return false;
     }
     
     public int getMaxElements(){
@@ -67,9 +73,9 @@ public class Hangar implements Copyable <Hangar> {
         
     @Override
     public String toString(){
-        String res="Esta instancia de la clase Hangar contiene "+weapons.toString()+
-                " armas y "+shieldBoosters.toString()+" potenciadores de escudo y puede almacenar "+maxElements+
-                " elementos.";
+        String res="Esta instancia de la clase Hangar contiene las siguientes armas:\n "+weapons.toString()+
+                "  \ny los siguientes potenciadores de escudo:\n"+shieldBoosters.toString()+"\ny puede almacenar "+maxElements+
+                " elementos.\n";
         return res;
     }
     

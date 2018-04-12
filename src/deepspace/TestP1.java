@@ -48,7 +48,7 @@ public class TestP1 {
             System.out.format("\nNumero de hangares: %d\n", dado.initWithNHangars());
             System.out.format("\nNumero de armas: %d\n", dado.initWithNWeapons());
             System.out.format("\nNumero de escudos: %d\n", dado.initWithNShields());
-            System.out.format("\nComienzo: %d\n", dado.WhoStarts(2));
+            System.out.format("\nComienzo: %d\n", dado.whoStarts(2));
             System.out.format("\nPrimer disparo: %s\n", dado.firstShot());
             System.out.format("\n¿Se ha movido?: %b\n", dado.spaceStationMoves(i/100));
         }

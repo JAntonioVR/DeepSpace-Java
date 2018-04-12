@@ -16,7 +16,7 @@ public class GameUniverse {
     private EnemyStarShip currentEnemy;
     private Dice dice;
     private SpaceStation currentStation;
-    private ArrayList<SpaceStation> SpaceStations;
+    private ArrayList<SpaceStation> SpaceStations=new ArrayList<>();
     
     public GameUniverse(){
         this.turns=0;
@@ -30,6 +30,29 @@ public class GameUniverse {
         }
         else return false;
     }
+    
+    public void init(ArrayList<String> names){
+      GameState state=gamestate.getState();
+      if(state==GameState.CANNOTPLAY){
+        ArrayList<SpaceStation> spaceStations=new ArrayList<>();
+        CardDealer dealer=CardDealer.getInstance();
+        for(int i=0; i< names.size(); i++){
+          SuppliesPackage supplies=dealer.nextSuppliesPackage();
+          SpaceStation station=new SpaceStation(names.get(i),supplies);
+          int nh=dice.initWithNHangars();
+          int nw=dice.initWithNWeapons();
+          int ns=dice.initWithNShields();
+          Loot l=new Loot(0,nw,ns,ns,nh);
+          station.setLoot(l);
+          spaceStations.add(station);
+        }
+        currentStationIndex=dice.whoStarts(names.size());
+        currentStation=spaceStations.get(currentStationIndex);
+        currentEnemy=dealer.nextEnemy();
+        gamestate.next(turns,names.size());
+        } 
+    }
+    
     
     void discardHangar(){
         if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
@@ -76,8 +99,9 @@ public class GameUniverse {
     
     @Override
     public String toString(){
-        String res="El universo del juego tiene: \n*Indice de la estacion espacial actual= "+currentStationIndex+
-                "\n*"+turns+" turnos, \n*espacion espacial actual:"+currentStation.toString()+"  \n*El enemigo actual es: "
+        String res;
+        res="El universo del juego tiene: \n*Indice de la estacion espacial actual= "+currentStationIndex+
+                "\n*"+turns+" turnos, \n*las estaciones espaciales del universo son:"+SpaceStations.toString()+"  \n*El enemigo actual es: "
                 +currentEnemy.toString() + ",\nel estado del dado es: " +dice.toString();
         return res;
     }

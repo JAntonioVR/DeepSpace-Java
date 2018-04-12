@@ -52,9 +52,9 @@ public class Weapon implements Copyable <Weapon> {
     public String toString(){
         String mensaje;
         mensaje = "El tipo de arma es "+this.type+
-                ", el nombre del arma es "+this.name+
-                ", la potencia del arma es "+this.power()+
-                " y los usos que le quedan al arma son "+this.uses;
+                ", \nel nombre del arma es "+this.name+
+                ", \nla potencia del arma es "+this.power()+
+                " \ny los usos que le quedan al arma son "+this.uses;
         return mensaje;
     }
     
