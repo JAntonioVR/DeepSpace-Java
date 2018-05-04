@@ -31,23 +31,20 @@ public class GameUniverse {
         else return false;
     }
     
-    public void init(ArrayList<String> names){
+     public void init(ArrayList<String> names){
       GameState state=gamestate.getState();
-      currentStationIndex=0;
-      System.out.format("\n%s\n", state.toString());
       if(state==GameState.CANNOTPLAY){
-        CardDealer dealer;
-        dealer=CardDealer.getInstance();
-        for(int i=0; i<names.size(); i++){
+        turns=0;
+        CardDealer dealer=CardDealer.getInstance();
+        for(int i=0; i< names.size(); i++){
           SuppliesPackage supplies=dealer.nextSuppliesPackage();
-          SpaceStation station = new SpaceStation(names.get(i),supplies);
+          SpaceStation station=new SpaceStation(names.get(i),supplies);
           int nh=dice.initWithNHangars();
           int nw=dice.initWithNWeapons();
           int ns=dice.initWithNShields();
           Loot l=new Loot(0,nw,ns,ns,nh);
           station.setLoot(l);
           SpaceStations.add(station);
-          
         }
         currentStationIndex=dice.whoStarts(names.size());
         currentStation=SpaceStations.get(currentStationIndex);

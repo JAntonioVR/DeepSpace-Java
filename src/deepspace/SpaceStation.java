@@ -20,7 +20,7 @@ public class SpaceStation {
     private String name;
     private int nMedals;
     private float shieldPower;
-    private Damage pendingDamage;
+    private Damage pendingDamage=new Damage(0,0);
     private ArrayList<Weapon> weapons=new ArrayList<>();
     private ArrayList<ShieldBooster> shieldBoosters=new ArrayList<>();
     private Hangar hangar;
@@ -250,7 +250,7 @@ public class SpaceStation {
     }
     
     public boolean validState(){
-        return pendingDamage==null || pendingDamage.hasNoEffect();
+        return pendingDamage.hasNoEffect();
     }
     
     @Override
@@ -259,7 +259,9 @@ public class SpaceStation {
         res = "La estacion espacial tiene: \n*Una potencia de disparo de "+ammoPower+
                 "\n*"+fuelUnits+" Unidades de combustible \n*"+nMedals+" medallas \n*Una potencia de escudo de "+
                 shieldPower + "\nSu nombre es: " + name + "\nARMAS:\n"+weapons.toString()+"\nPOTENCIADORES DE ESCUDO:\n"+
-                shieldBoosters.toString()+"\nDaño pendiente: "+pendingDamage.toString()+"\nHangar: "+hangar.toString();
+                shieldBoosters.toString()+"\nDaño pendiente: "+pendingDamage.toString();
+        if(hangar!=null)
+            res=res+"\nHangar: "+hangar.toString();
         return res;
     }
     
