@@ -24,14 +24,14 @@ public class GameUniverse {
         gamestate=new GameStateController();
     }
     
-    boolean haveAWinner(){
+    public boolean haveAWinner(){
         if(currentStation.getNMedals()==WIN){
             return true;
         }
         else return false;
     }
     
-     public void init(ArrayList<String> names){
+    public void init(ArrayList<String> names){
       GameState state=gamestate.getState();
       if(state==GameState.CANNOTPLAY){
         turns=0;
@@ -53,7 +53,7 @@ public class GameUniverse {
         } 
     }
     
-    CombatResult combat(){
+    public CombatResult combat(){
       GameState state=gamestate.getState();
       if(state==GameState.BEFORECOMBAT || state==GameState.INIT)
         return combatGo(currentStation,currentEnemy);
@@ -61,7 +61,7 @@ public class GameUniverse {
         return CombatResult.NOCOMBAT;
     }
     
-    public CombatResult combatGo(SpaceStation station, EnemyStarShip enemy){
+    CombatResult combatGo(SpaceStation station, EnemyStarShip enemy){
         GameCharacter ch=dice.firstShot();
         boolean enemyWins;
         float fire;
