@@ -7,9 +7,9 @@ package deepspace;
  * @author Pedro Pablo Ruiz Huertas y Juan Antonio Villegas Recio
  */
 public class SuppliesPackage implements Copyable <SuppliesPackage> {
-    private float ammoPower;
-    private float fuelUnits;
-    private float shieldPower;
+    private float ammoPower=0;
+    private float fuelUnits=0;
+    private float shieldPower=0;
     
     public SuppliesPackage(float new_ammoPower, float new_fuelUnits,
                            float new_shieldPower){
