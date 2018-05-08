@@ -1,6 +1,7 @@
 
 package deepspace;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 /**
@@ -153,6 +154,17 @@ public class TestP2 {
          nombres.add("Jorge");
          gameUniverse.init(nombres);
          System.out.format("\n%s\n",gameUniverse.toString());
-        
+         
+         CombatResult combatresult;
+         EnemyStarShip enemystarship2=new EnemyStarShip("HalconMilenario2",1000,1000,loot,damage2);
+         combatresult=gameUniverse.combatGo(spaceStation, enemystarship2);
+         System.out.format("\n%s\n",combatresult.toString());
+         
+         
+         if (gameUniverse.nextTurn())
+            System.out.format("TURNO SIGUIENTE");
+         else
+            System.out.format("MISMO TURNO");
+           
     }
 }
