@@ -21,6 +21,6 @@ public class PlayWithUI {
         // You can play with multiple players
         // You can read from console how many players you want
         
-        controller.start(2);   // Let's play whith 2 players
+        controller.start(2);   // Let's play with 2 players
     }
 }

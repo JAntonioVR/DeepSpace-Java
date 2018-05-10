@@ -7,7 +7,7 @@ package deepspace;
  * @author Pedro Pablo Ruiz Huertas y Juan Antonio Villegas Recio
  */
 public class ShieldBooster implements Copyable <ShieldBooster> {
-    private String name; //¿PAQUETE CLASE STRING?
+    private String name;
     private float boost;
     private int uses;
     
@@ -43,6 +43,7 @@ public class ShieldBooster implements Copyable <ShieldBooster> {
         return (float) 1.0;
     }
     
+    @Override
     public String toString(){
         String mensaje;
         mensaje = "El nombre del escudo es "+this.name+

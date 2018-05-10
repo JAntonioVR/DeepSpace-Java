@@ -32,6 +32,16 @@ public class SpaceStation {
         shieldPower=supplies.getShieldPower();
     }
     
+    SpaceStation(SpaceStation station){
+        name=station.getName();
+        ammoPower=station.getAmmoPower();
+        fuelUnits=station.getFuelUnits();
+        shieldPower=station.getShieldPower();
+        nMedals=station.getNMedals();
+        pendingDamage=station.getPendingDamage();
+        
+    }
+    
     
     private void assignFuelValue(float f){
         if(f>MAXFUEL)
