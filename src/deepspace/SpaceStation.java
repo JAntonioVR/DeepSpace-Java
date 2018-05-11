@@ -10,7 +10,7 @@ import static jdk.nashorn.internal.objects.NativeMath.max;
  *
  * @author Pedro Pablo Ruiz Huertas y Juan Antonio Villegas Recio
  */
-public class SpaceStation {
+public class SpaceStation implements SpaceFighter{
     
     
     private static float MAXFUEL=100f;
@@ -20,7 +20,7 @@ public class SpaceStation {
     private String name;
     private int nMedals;
     private float shieldPower;
-    private Damage pendingDamage=new Damage(0,0);
+    private Damage pendingDamage;
     private ArrayList<Weapon> weapons=new ArrayList<>();
     private ArrayList<ShieldBooster> shieldBoosters=new ArrayList<>();
     private Hangar hangar;
@@ -39,6 +39,9 @@ public class SpaceStation {
         shieldPower=station.getShieldPower();
         nMedals=station.getNMedals();
         pendingDamage=station.getPendingDamage();
+        weapons=station.getWeapons();
+        shieldBoosters=station.getShieldBoosters();
+        hangar=station.getHangar();
         
     }
     
@@ -103,6 +106,7 @@ public class SpaceStation {
             hangar.removeWeapon(i);
     }
     
+    @Override
     public float fire(){
         int size=weapons.size();
         float factor=1;
@@ -159,10 +163,13 @@ public class SpaceStation {
     
     public void mountShieldBooster(int i){
         ShieldBooster aux;
-        if(hangar!=null){
-            aux=hangar.getShieldBoosters().remove(i);
-            if(aux!=null) shieldBoosters.add(aux);
+        if(i>=0 && i<hangar.getShieldBoosters().size()){
+            if(hangar!=null){
+                aux=hangar.getShieldBoosters().remove(i);
+                if(aux!=null) shieldBoosters.add(aux);
+            }
         }
+        
     }
     
     public void mountWeapon(int i){
@@ -182,6 +189,7 @@ public class SpaceStation {
             fuelUnits=0;
     }
     
+    @Override
     public float protection(){
         int size=shieldBoosters.size();
         float factor=1;
@@ -203,6 +211,7 @@ public class SpaceStation {
         return hangar.addShieldBooster(s);
     }
     
+    @Override
     public ShotResult receiveShot(float shot){
         float myProtection=protection();
         if(myProtection>=shot){
@@ -228,7 +237,7 @@ public class SpaceStation {
         return hangar.addWeapon(w);
     }
     
-    public void setLoot(Loot loot){
+    public Transformation setLoot(Loot loot){
         int elements;
         CardDealer dealer=CardDealer.getInstance();
         int h=loot.getNHangars();
@@ -253,6 +262,15 @@ public class SpaceStation {
         }
         int medals=loot.getNMedals();
         nMedals+=medals;
+        
+        if(loot.getEfficient())
+            return Transformation.GETEFFICIENT;
+        else{
+            if(loot.spaceCity())
+                return Transformation.SPACECITY;
+            else
+                return Transformation.NOTRANSFORM;
+        } 
     }
     
     public void setPendingDamage(Damage d){

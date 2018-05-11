@@ -17,11 +17,13 @@ public class GameUniverse {
     private Dice dice;
     private SpaceStation currentStation;
     private ArrayList<SpaceStation> SpaceStations=new ArrayList<>();
+    private boolean haveSpaceCity;
     
     public GameUniverse(){
         this.turns=0;
         this.dice=new Dice();
         gamestate=new GameStateController();
+        haveSpaceCity=false;
     }
     
     public boolean haveAWinner(){
@@ -98,14 +100,39 @@ public class GameUniverse {
       }
       else{
         Loot aLoot=enemy.getLoot();
-        station.setLoot(aLoot);
-        combatResult=CombatResult.STATIONWINS;
+        Transformation transformation=station.setLoot(aLoot);
+        if(transformation==Transformation.GETEFFICIENT){
+            makeStationEfficient();
+            combatResult=CombatResult.STATIONWINSANDCONVERTS;
+        }
+        else{
+            if(transformation==Transformation.SPACECITY){
+                createSpaceCity();
+                combatResult=CombatResult.STATIONWINSANDCONVERTS;
+            }
+            else
+                combatResult=CombatResult.STATIONWINS;
+        }
       }
       gamestate.next(turns, SpaceStations.size());
       return combatResult;
     }
     
-    
+    public void createSpaceCity(){
+        if (!haveSpaceCity){
+            ArrayList<SpaceStation> vec=new ArrayList<>();
+            for (int i=0; i<SpaceStations.size(); i++){
+                if(i!=currentStationIndex)
+                    vec.add(SpaceStations.get(i));
+            }
+            
+            //currentStation=new SpaceCity(currentStation,vec);
+            SpaceStations.remove(currentStationIndex);
+            SpaceStations.add(currentStationIndex, currentStation);
+            haveSpaceCity=true;
+            
+        }
+    }
     
     public void discardHangar(){
         if(gamestate.getState()==GameState.INIT || gamestate.getState()==GameState.AFTERCOMBAT)
@@ -138,6 +165,15 @@ public class GameUniverse {
     
     public GameUniverseToUI getUIversion(){
         return new GameUniverseToUI(this.currentStation, this.currentEnemy);
+    }
+    
+    public void makeStationEfficient(){
+        currentStation=new PowerEfficientSpaceStation(currentStation);
+        if(dice.extraEfficiency()){
+            currentStation=new BetaPowerEfficientSpaceStation(currentStation);
+        }
+        SpaceStations.remove(currentStationIndex);
+        SpaceStations.add(currentStationIndex, currentStation);
     }
     
     public void mountShieldBooster(int i){

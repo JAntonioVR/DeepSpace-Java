@@ -12,6 +12,7 @@ public class Dice {
     private float NSHIELDSPROB;
     private float NWEAPONSPROB;
     private float FIRSTSHOTPROB;
+    private float EXTRAEFFICIENCYPROB;
     private Random generator;
     
     Dice(){
@@ -19,9 +20,17 @@ public class Dice {
         NSHIELDSPROB=(float) 0.25;
         NWEAPONSPROB=(float) 0.33;
         FIRSTSHOTPROB=(float) 0.5;
+        EXTRAEFFICIENCYPROB=(float) 0.8;
         
         generator=new Random();
         
+    }
+    
+    public boolean extraEfficiency(){
+        float prob;
+        prob=generator.nextFloat();
+        
+        return prob<EXTRAEFFICIENCYPROB;     
     }
     
     public int initWithNHangars(){

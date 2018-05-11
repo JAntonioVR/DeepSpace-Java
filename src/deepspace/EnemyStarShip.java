@@ -5,7 +5,7 @@ package deepspace;
  *
  * @author Pedro Pablo Ruiz Huertas y Juan Antonio Villegas Recio
  */
-public class EnemyStarShip implements Copyable <EnemyStarShip> {
+public class EnemyStarShip implements Copyable <EnemyStarShip>, SpaceFighter {
     private float ammoPower;
     private String name;
     private float shieldPower;
@@ -53,14 +53,17 @@ public class EnemyStarShip implements Copyable <EnemyStarShip> {
         return new EnemyToUI(this);
     }
     
+    @Override
     public float fire(){
         return this.ammoPower;
     }
     
+    @Override
     public float protection(){
         return this.shieldPower;
     }
     
+    @Override
     public ShotResult receiveShot(float shot){
         if(this.shieldPower<shot)
             return ShotResult.DONOTRESIST;
@@ -76,6 +79,8 @@ public class EnemyStarShip implements Copyable <EnemyStarShip> {
                         ",\ny el daño es:"+damage.toString();
         return mensaje;
     }
+    
+    @Override
     public EnemyStarShip copy(){
         return new EnemyStarShip(this);
     }

@@ -6,7 +6,7 @@ package deepspace;
  *
  * @author Pedro Pablo Ruiz Huertas y Juan Antonio Villegas Recio
  */
-public class ShieldBooster implements Copyable <ShieldBooster> {
+public class ShieldBooster implements Copyable <ShieldBooster>, CombatElement {
     private String name;
     private float boost;
     private int uses;
@@ -27,6 +27,7 @@ public class ShieldBooster implements Copyable <ShieldBooster> {
         return boost;
     }
     
+    @Override
     public int getUses(){
         return uses;
     }
@@ -35,6 +36,7 @@ public class ShieldBooster implements Copyable <ShieldBooster> {
         return new ShieldToUI(this);
     }
     
+    @Override
     public float useIt(){
         if(uses>0){
             uses--;

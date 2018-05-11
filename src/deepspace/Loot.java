@@ -12,14 +12,25 @@ public class Loot {
     private int nShields;
     private int nHangars;
     private int nMedals;
+    private boolean getEfficient;
+    private boolean spaceCity;
     
-    public Loot(int new_nSupplies, int new_nWeapons,
-                int new_nShields, int new_nHangars, int new_nMedals){
-        nSupplies=new_nSupplies;
-        nWeapons=new_nWeapons;
-        nShields=new_nShields;
-        nHangars=new_nHangars;
-        nMedals=new_nMedals;
+    public Loot(int nsu, int nw, int nsh, int nh, int nm){
+        nSupplies=nsu;
+        nWeapons=nw;
+        nShields=nsh;
+        nHangars=nh;
+        nMedals=nm;
+    }
+    
+    public Loot(int nsu, int nw, int nsh, int nh, int nm, boolean ef, boolean city){
+        nSupplies=nsu;
+        nWeapons=nw;
+        nShields=nsh;
+        nHangars=nh;
+        nMedals=nm;
+        getEfficient=ef;
+        spaceCity=city;
     }
     
     public int getNSupplies(){
@@ -42,8 +53,16 @@ public class Loot {
         return nMedals;
     }
     
-    LootToUI getUIversion(){
+    public boolean getEfficient(){
+        return getEfficient;
+    }
+    
+    public LootToUI getUIversion(){
         return new LootToUI(this);
+    }
+    
+    public boolean spaceCity(){
+        return spaceCity;
     }
     
     public String toString(){

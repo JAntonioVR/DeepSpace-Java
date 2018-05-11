@@ -6,7 +6,7 @@ package deepspace;
  *
  * @author Pedro Pablo Ruiz Huertas y Juan Antonio Villegas Recio
  */
-public class Weapon implements Copyable <Weapon> {
+public class Weapon implements Copyable <Weapon>, CombatElement {
     private String name;
     private WeaponType type;
     private int uses;
@@ -27,6 +27,7 @@ public class Weapon implements Copyable <Weapon> {
         return type;
     }
     
+    @Override
     public int getUses(){
         return uses;
     }
@@ -39,6 +40,7 @@ public class Weapon implements Copyable <Weapon> {
         return new WeaponToUI(this);
     }
     
+    @Override
     public float useIt(){
         if(uses>0){
             uses--;
