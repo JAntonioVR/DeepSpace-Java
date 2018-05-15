@@ -24,4 +24,9 @@ public class BetaPowerEfficientSpaceStation extends PowerEfficientSpaceStation{
             return super.fire();
     }
     
+    @Override
+    public String toString(){
+        return "BETA "+super.toString();
+    }
+    
 }

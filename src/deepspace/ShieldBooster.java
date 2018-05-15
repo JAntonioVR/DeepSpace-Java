@@ -45,16 +45,12 @@ public class ShieldBooster implements Copyable <ShieldBooster>, CombatElement {
         return (float) 1.0;
     }
     
-    @Override
-    public String toString(){
-        String mensaje;
-        mensaje = "El nombre del escudo es "+this.name+
-                ", \nel potenciador del escudo es "+this.getBoost()+
-                " y \nlos usos que le quedan al escudo son "+this.getUses();
-        return mensaje;
-    }
-    
     public ShieldBooster copy(){
         return new ShieldBooster(this);
+    }
+    
+    @Override
+    public String toString(){
+        return "Nombre: "+this.name+" Potencia: "+this.getBoost()+" Usos: "+this.getUses()+"  ";
     }
 }

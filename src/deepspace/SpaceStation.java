@@ -286,10 +286,23 @@ public class SpaceStation implements SpaceFighter{
         String res;
         res = "La estacion espacial tiene: \n*Una potencia de disparo de "+ammoPower+
                 "\n*"+fuelUnits+" Unidades de combustible \n*"+nMedals+" medallas \n*Una potencia de escudo de "+
-                shieldPower + "\nSu nombre es: " + name + "\nARMAS:\n"+weapons.toString()+"\nPOTENCIADORES DE ESCUDO:\n"+
-                shieldBoosters.toString()+"\nDaño pendiente: "+pendingDamage.toString();
+                shieldPower + "\nSu nombre es: " + name + "\nARMAS:\n";
+        for (Weapon arma:weapons){
+            res+=arma.toString()+" ";
+        }
+        res+="\nPOTENCIADORES DE ESCUDO:\n";
+        for (ShieldBooster potenciador:shieldBoosters){
+            res+=potenciador.toString()+" ";
+        }
+        res+="\nDaño pendiente: ";
+        if(pendingDamage!=null)
+            res+=pendingDamage.toString();
+        else
+            res+="No tiene";
         if(hangar!=null)
-            res=res+"\nHangar: "+hangar.toString();
+            res+="\nHangar: "+hangar.toString();
+        else
+            res+="\nNo tiene ningún hangar\n";
         return res;
     }
     

@@ -51,20 +51,15 @@ public class Weapon implements Copyable <Weapon>, CombatElement {
         }
     }
     
-    public String toString(){
-        String mensaje;
-        mensaje = "El tipo de arma es "+this.type+
-                ", \nel nombre del arma es "+this.name+
-                ", \nla potencia del arma es "+this.power()+
-                " \ny los usos que le quedan al arma son "+this.uses;
-        return mensaje;
-    }
-    
     WeaponToUI getUIVersion(){
         return new WeaponToUI(this);
     }
     
     public Weapon copy(){
         return new Weapon(this);
+    }
+    
+     public String toString(){
+        return "Nombre: "+this.name+" Tipo: "+this.getType()+"("+power()+") Usos: "+this.getUses()+"  ";
     }
 }

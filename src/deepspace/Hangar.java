@@ -27,7 +27,8 @@ public class Hangar implements Copyable <Hangar> {
     }
     
     private boolean spaceAvailable(){
-        return weapons.size()+shieldBoosters.size() <= maxElements;
+        
+        return weapons.size()+shieldBoosters.size() < maxElements;
     }   
     
     public boolean addWeapon(Weapon w){
