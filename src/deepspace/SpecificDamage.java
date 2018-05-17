@@ -2,38 +2,40 @@
 package deepspace;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
  * @author Pedro Pablo Ruiz Huertas y Juan Antonio Villegas Recio
  */
-public abstract class Damage {
-    public int nShields;
+public class SpecificDamage extends Damage{
+    private ArrayList<WeaponType> weapons=new ArrayList<>();
+    
+    SpecificDamage(ArrayList<WeaponType> wl, int s){
+        super(s);
+        this.weapons=wl;
+    }
+    
+    SpecificDamage(SpecificDamage d){
+        super(d);
+        this.weapons=d.weapons;
+    }
 
-    
-    Damage(int s){
-        this.nShields=s;
+    @Override
+    public SpecificDamageToUI getUIversion() {
+        return new SpecificDamageToUI(this);
     }
     
-    Damage(Damage d){
-        this.nShields=d.nShields;
+    public ArrayList<WeaponType> getWeapons(){
+        return this.weapons;
     }
-    
-    public int getNShields(){
-        return this.nShields;
-    }
-    
-    
-    abstract public DamageToUI getUIversion();
-    
-    abstract public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s);
-        /*int minShields=nShields;
+
+    @Override
+    public SpecificDamage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
+        int minShields=nShields;
         if (nShields>s.size())
             minShields=s.size();
         
-        if (!weapons.isEmpty()){
-            ArrayList<WeaponType> tipos= new ArrayList<>();
+        ArrayList<WeaponType> tipos= new ArrayList<>();
             int laserWeapons=0, missileWeapons=0, plasmaWeapons=0;
             int laserW=0, missileW=0, plasmaW=0;
             int i;
@@ -78,43 +80,31 @@ public abstract class Damage {
             for (i=0; i<minWeaponsPlasma; i++) {
                 tipos.add(WeaponType.PLASMA);
             }
-            return new Damage(tipos, minShields);
-        }
-        else {
-            int minWeapons=nWeapons;
-            if (nWeapons>w.size())
-                minWeapons=w.size();
-            
-            return new Damage(minWeapons, minShields);
-        }*/
-    
-    private int arrayContainsType(ArrayList<Weapon> w, WeaponType t){
-        Iterator<Weapon> it=w.iterator();
-        int i=0;
-        Weapon waux=(Weapon) it;
-        while(it.hasNext() && waux.getType() != t){
-            it.next();
-            waux=(Weapon) it;
-            i++;
-        }
-        if (it.hasNext())
-            return i;
-        else
-            return -1;
+            return new SpecificDamage(tipos, minShields);
     }
-    
-    abstract public void discardWeapon(Weapon w);
-    
-    public void discardShieldBooster(){
-        if (this.nShields>0)
-            this.nShields--;      
+
+    @Override
+    public void discardWeapon(Weapon w) {
+       int i=0;
+       while(i<this.weapons.size()){
+                if (this.weapons.get(i)==w.getType()){
+                    this.weapons.remove(i);
+                }
+                else
+                    i++;
+            }
     }
-    
-    abstract public boolean hasNoEffect();
+
+    @Override
+    public boolean hasNoEffect() {
+        return nShields==0 && weapons.isEmpty();
+    }
     
     @Override
     public String toString(){
-        String mensaje="El numero de escudos eliminados ha sido "+nShields;
+        String mensaje="El numero de escudos eliminados ha sido "+nShields+
+                       "\ny los tipos de armas eliminadas han sido "+weapons;
         return mensaje;
     }
+
 }

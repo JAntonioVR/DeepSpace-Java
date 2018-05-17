@@ -50,7 +50,7 @@ public class TestP2 {
         
         Damage damage1, damage2, damage3;
         ArrayList <WeaponType> wl=new ArrayList<>();
-        damage1=new Damage(5,4);
+        /*damage1=new Damage(5,4);
         damage2=new Damage(wl, 2);
         wl.add(WeaponType.LASER);
         wl.add(WeaponType.MISSILE);
@@ -165,6 +165,6 @@ public class TestP2 {
             System.out.format("TURNO SIGUIENTE");
          else
             System.out.format("MISMO TURNO");
-           
+           */
     }
 }

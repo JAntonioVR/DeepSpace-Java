@@ -47,6 +47,26 @@ public class TestP4 {
         
         System.out.println(station.toString());
         
+        ArrayList<SpaceStation> collaborators=new ArrayList<>();
+        collaborators.add(station);
+        SpaceStation station2=new SpaceStation("Pepe", sp);
+        station2=new SpaceCity(station2, collaborators);
+        System.out.println(station2.fire());
+        System.out.println(station2.protection());
+        
+        System.out.println(station2.toString());
+        
+        ArrayList <WeaponType> wl=new ArrayList<>();
+        wl.add(WeaponType.LASER);
+        wl.add(WeaponType.MISSILE);
+        wl.add(WeaponType.PLASMA);
+        NumericDamage damage1=new NumericDamage(5, 4);
+        SpecificDamage damage2=new SpecificDamage(wl, 4);
+        
+        System.out.println(damage1.toString());
+        System.out.println(damage2.toString());
+        
+        
         
         
     }
