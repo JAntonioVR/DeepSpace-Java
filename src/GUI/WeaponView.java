@@ -56,24 +56,32 @@ public class WeaponView extends javax.swing.JPanel {
         Power = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 255));
+        setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
             }
         });
 
+        name.setFont(new java.awt.Font("AR DESTINE", 0, 14)); // NOI18N
         name.setText("ARMA");
 
+        TypeText.setFont(new java.awt.Font("AR DESTINE", 0, 11)); // NOI18N
         TypeText.setText("Tipo:");
 
+        UsesText.setFont(new java.awt.Font("AR DESTINE", 0, 11)); // NOI18N
         UsesText.setText("Usos:");
 
+        Type.setFont(new java.awt.Font("AR DESTINE", 0, 11)); // NOI18N
         Type.setText("jLabel4");
 
+        Uses.setFont(new java.awt.Font("AR DESTINE", 0, 11)); // NOI18N
         Uses.setText("jLabel5");
 
+        PowerText.setFont(new java.awt.Font("AR DESTINE", 0, 11)); // NOI18N
         PowerText.setText("Potencia:");
 
+        Power.setFont(new java.awt.Font("AR DESTINE", 0, 11)); // NOI18N
         Power.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -83,24 +91,20 @@ public class WeaponView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(name)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TypeText)
-                            .addComponent(name))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TypeText)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Type))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(PowerText)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Power))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(UsesText)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Uses)))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addComponent(PowerText)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Power))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(UsesText)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Uses)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

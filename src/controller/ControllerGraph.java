@@ -13,6 +13,7 @@ import deepspace.ShieldBooster;
 import deepspace.WeaponToUI;
 import deepspace.ShieldToUI;
 import deepspace.CombatResult;
+import deepspace.WeaponType;
 
 
 
@@ -47,6 +48,14 @@ public class ControllerGraph {
     
     public GameUniverseToUI getModelToUI () {
         return model.getUIversion();
+    }
+
+    public ShieldToUI dameUnEscudoPrueba(){
+        return new ShieldToUI(new ShieldBooster("ESCUDACO",3,4));
+    }
+    
+    public WeaponToUI dameUnArmaPrueba(){
+        return new WeaponToUI(new Weapon("ARMACA",WeaponType.PLASMA,5));
     }
     //=================================================================
     static public enum Element {
@@ -125,5 +134,6 @@ public class ControllerGraph {
         view.updateView();
         
     }
+   
     
 }

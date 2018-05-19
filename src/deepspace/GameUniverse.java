@@ -205,6 +205,16 @@ public class GameUniverse {
         return false;
     }
     
+    public ShieldBooster dameUnEscudoPrueba(){
+        //HAS PUESTO EL CONTRUCTOR DEL TOUI PUBLICO
+        return new ShieldBooster("ESCUDACO",3,4);
+    }
+    
+    public Weapon dameUnArmaPrueba(){
+        //HAS PUESTO EL CONTRUCTOR DEL TOUI PUBLICO
+        return new Weapon("ARMACA",WeaponType.PLASMA,5);
+    }
+    
     @Override
     public String toString(){
         String res;

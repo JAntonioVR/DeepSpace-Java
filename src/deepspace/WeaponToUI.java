@@ -14,7 +14,7 @@ public class WeaponToUI {
     private float power;
     private int uses;  
     
-    WeaponToUI(Weapon w) {
+    public WeaponToUI(Weapon w) {
         type=w.getType();
         power=w.power();
         uses=w.getUses();

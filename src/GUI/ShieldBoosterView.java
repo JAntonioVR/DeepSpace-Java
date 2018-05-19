@@ -16,7 +16,12 @@ public class ShieldBoosterView extends javax.swing.JPanel {
     private boolean selected=false;
     
     public ShieldBoosterView() {
+        setOpaque(selected);
         initComponents();
+    }
+    
+    public boolean isSelected(){
+        return selected;
     }
     
     void setShieldBooster(ShieldToUI sb){
@@ -41,16 +46,27 @@ public class ShieldBoosterView extends javax.swing.JPanel {
         boost = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 255));
+        setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setPreferredSize(new java.awt.Dimension(118, 96));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
+        name.setFont(new java.awt.Font("AR DESTINE", 0, 14)); // NOI18N
         name.setText("ESCUDO");
 
+        usesText.setFont(new java.awt.Font("AR DESTINE", 0, 11)); // NOI18N
         usesText.setText("Usos:");
 
+        boostText.setFont(new java.awt.Font("AR DESTINE", 0, 11)); // NOI18N
         boostText.setText("Potencia:");
 
+        uses.setFont(new java.awt.Font("AR DESTINE", 0, 11)); // NOI18N
         uses.setText("jLabel1");
 
+        boost.setFont(new java.awt.Font("AR DESTINE", 0, 11)); // NOI18N
         boost.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -60,9 +76,7 @@ public class ShieldBoosterView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(name)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(boostText)
@@ -70,9 +84,12 @@ public class ShieldBoosterView extends javax.swing.JPanel {
                                 .addComponent(boost))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(usesText)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(uses)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(8, 8, 8)
+                                .addComponent(uses)))
+                        .addGap(0, 10, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(name)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,6 +107,12 @@ public class ShieldBoosterView extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        selected = !selected;
+        setOpaque (selected);
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
