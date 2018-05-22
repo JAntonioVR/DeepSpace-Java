@@ -13,16 +13,17 @@ public class Hangar implements Copyable <Hangar> {
     private ArrayList<Weapon> weapons=new ArrayList<>();
     
     
-    Hangar(int capacity){
+    public Hangar(int capacity){
         maxElements=capacity;
     }
-    Hangar(Hangar h){
+    
+    public Hangar(Hangar h){
         weapons=h.weapons;
         shieldBoosters=h.shieldBoosters;
         maxElements=h.maxElements;
     }
     
-    HangarToUI getUIversion(){
+    public HangarToUI getUIversion(){
         return new HangarToUI(this);
     }
     

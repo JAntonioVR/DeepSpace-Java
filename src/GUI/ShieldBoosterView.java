@@ -11,7 +11,7 @@ import deepspace.ShieldToUI;
  *
  * @author JuanAntonio
  */
-public class ShieldBoosterView extends javax.swing.JPanel {
+public class ShieldBoosterView extends CombatElementView {
 
     private boolean selected=false;
     
@@ -20,8 +20,14 @@ public class ShieldBoosterView extends javax.swing.JPanel {
         initComponents();
     }
     
+    @Override    
     public boolean isSelected(){
         return selected;
+    }
+    
+    @Override
+    public boolean isWeapon(){
+        return false;
     }
     
     void setShieldBooster(ShieldToUI sb){
@@ -47,7 +53,7 @@ public class ShieldBoosterView extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 204, 255));
         setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        setPreferredSize(new java.awt.Dimension(118, 96));
+        setPreferredSize(new java.awt.Dimension(124, 92));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -74,9 +80,9 @@ public class ShieldBoosterView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(boostText)
@@ -84,17 +90,14 @@ public class ShieldBoosterView extends javax.swing.JPanel {
                                 .addComponent(boost))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(usesText)
-                                .addGap(8, 8, 8)
-                                .addComponent(uses)))
-                        .addGap(0, 10, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(name)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(uses))))
+                    .addComponent(name))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(name)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -104,7 +107,7 @@ public class ShieldBoosterView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boostText)
                     .addComponent(boost))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

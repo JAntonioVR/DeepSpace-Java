@@ -15,7 +15,7 @@ public class SpecificDamageToUI extends DamageToUI{
     private ArrayList<WeaponType> weapons;
 //    private int nShields;
 
-    SpecificDamageToUI(SpecificDamage d) {
+    public SpecificDamageToUI(SpecificDamage d) {
         super(d);
         ArrayList<WeaponType> tmp=d.getWeapons();
         if (tmp!=null) {

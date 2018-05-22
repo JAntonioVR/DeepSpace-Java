@@ -11,7 +11,7 @@ import deepspace.WeaponToUI;
  *
  * @author JuanAntonio
  */
-public class WeaponView extends javax.swing.JPanel {
+public class WeaponView extends CombatElementView {
     
     private boolean selected=false;
     /**
@@ -22,8 +22,14 @@ public class WeaponView extends javax.swing.JPanel {
         initComponents();
     }
     
-    boolean isSelected(){
+    @Override    
+    public boolean isSelected(){
         return selected;
+    }
+    
+    @Override
+    public boolean isWeapon(){
+        return true;
     }
 
     void setWeapon(WeaponToUI w){
@@ -89,41 +95,42 @@ public class WeaponView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(name)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(name)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(TypeText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Type))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(PowerText)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Power))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(UsesText)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Uses)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Uses))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(PowerText)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Power)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(name)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TypeText)
-                    .addComponent(Type))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UsesText)
-                    .addComponent(Uses))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Type, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TypeText, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PowerText)
                     .addComponent(Power))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Uses)
+                    .addComponent(UsesText))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

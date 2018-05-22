@@ -13,6 +13,10 @@ import javax.swing.JOptionPane;
 import deepspace.GameState;
 import deepspace.WeaponToUI;
 import deepspace.ShieldToUI;
+import deepspace.HangarToUI;
+import deepspace.NumericDamageToUI;
+import deepspace.SpecificDamageToUI;
+import java.awt.Component;
 
 /**
  *
@@ -49,8 +53,16 @@ public class MainWindow extends JFrame implements View{
     private void initComponents() {
 
         panelPruebas = new javax.swing.JPanel();
+        seleccionados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        seleccionados.setText("SELECCION");
+        seleccionados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionadosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,17 +72,30 @@ public class MainWindow extends JFrame implements View{
                 .addContainerGap()
                 .addComponent(panelPruebas, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(seleccionados)
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPruebas, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(panelPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(seleccionados)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void seleccionadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionadosActionPerformed
+        for(Component c:panelPruebas.getComponents()){
+            System.out.println(((HangarView)c).getSelectedWeapons().toString());
+        }
+
+    }//GEN-LAST:event_seleccionadosActionPerformed
 
     @Override
     public void setController(ControllerGraph unControlador) {
@@ -83,10 +108,18 @@ public class MainWindow extends JFrame implements View{
         ShieldBoosterView vistaEscudoPrueba=new ShieldBoosterView();
         vistaEscudoPrueba.setShieldBooster(sbprueba);
         panelPruebas.add(vistaEscudoPrueba);*/
-        WeaponToUI wprueba=controller.dameUnArmaPrueba();
+        /*WeaponToUI wprueba=controller.dameUnArmaPrueba();
         WeaponView vistaArmaPrueba=new WeaponView();
         vistaArmaPrueba.setWeapon(wprueba);
-        panelPruebas.add(vistaArmaPrueba);
+        panelPruebas.add(vistaArmaPrueba);*/
+        /*HangarToUI hprueba=controller.dameUnHangarPrueba();
+        HangarView vistaHangarPrueba=new HangarView();
+        vistaHangarPrueba.setHangar(hprueba);
+        panelPruebas.add(vistaHangarPrueba);*/
+        SpecificDamageToUI nd=controller.dameUnSpecificDamagePrueba();
+        DamageView dv=new SpecificDamageView();
+        ((SpecificDamageView)dv).setSpecificDamage(nd);
+        panelPruebas.add(dv);
         
         repaint();
         revalidate();
@@ -115,5 +148,6 @@ public class MainWindow extends JFrame implements View{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel panelPruebas;
+    private javax.swing.JButton seleccionados;
     // End of variables declaration//GEN-END:variables
 }

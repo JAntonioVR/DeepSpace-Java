@@ -215,6 +215,41 @@ public class GameUniverse {
         return new Weapon("ARMACA",WeaponType.PLASMA,5);
     }
     
+    public Hangar dameUnHangarPrueba(){
+        Hangar h= new Hangar(8);
+        h.addShieldBooster(new ShieldBooster("Escudo",5,4));
+        h.addShieldBooster(new ShieldBooster("Escudo",3,5));
+        h.addShieldBooster(new ShieldBooster("Escudo",5,7));
+        h.addShieldBooster(new ShieldBooster("Escudo",0,5));
+        h.addWeapon(new Weapon("Arma",deepspace.WeaponType.LASER,5));
+        h.addWeapon(new Weapon("Arma",deepspace.WeaponType.MISSILE,4));
+        h.addWeapon(new Weapon("Arma",deepspace.WeaponType.PLASMA,3));
+        h.addWeapon(new Weapon("Arma",deepspace.WeaponType.LASER,5));
+        return h;
+    }
+    
+    public NumericDamage dameUnNumericDamagePrueba(){
+        return new NumericDamage(3,9);
+    }
+    
+    public SpecificDamage dameUnSpecificDamagePrueba(){
+        ArrayList<WeaponType> weapons=new ArrayList();
+        weapons.add(WeaponType.LASER);
+        weapons.add(WeaponType.MISSILE);
+        weapons.add(WeaponType.PLASMA);
+        weapons.add(WeaponType.LASER);
+        weapons.add(WeaponType.LASER);
+        weapons.add(WeaponType.MISSILE);
+        weapons.add(WeaponType.PLASMA);
+        weapons.add(WeaponType.LASER); 
+        weapons.add(WeaponType.LASER);
+        weapons.add(WeaponType.MISSILE);
+        weapons.add(WeaponType.PLASMA);
+        weapons.add(WeaponType.LASER);
+        return new SpecificDamage(weapons,6);
+        
+    }
+    
     @Override
     public String toString(){
         String res;

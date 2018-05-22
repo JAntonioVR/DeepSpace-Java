@@ -14,7 +14,10 @@ import deepspace.WeaponToUI;
 import deepspace.ShieldToUI;
 import deepspace.CombatResult;
 import deepspace.WeaponType;
-
+import deepspace.Hangar;
+import deepspace.HangarToUI;
+import deepspace.NumericDamageToUI;
+import deepspace.SpecificDamageToUI;
 
 
 /**
@@ -57,6 +60,19 @@ public class ControllerGraph {
     public WeaponToUI dameUnArmaPrueba(){
         return new WeaponToUI(new Weapon("ARMACA",WeaponType.PLASMA,5));
     }
+    
+    public HangarToUI dameUnHangarPrueba(){
+        return model.dameUnHangarPrueba().getUIversion();
+    }
+    
+    public NumericDamageToUI dameUnNumericDamagePrueba(){
+        return model.dameUnNumericDamagePrueba().getUIversion();
+    }
+    
+    public SpecificDamageToUI dameUnSpecificDamagePrueba(){
+        return model.dameUnSpecificDamagePrueba().getUIversion();
+    }
+    
     //=================================================================
     static public enum Element {
         WEAPON ("Arma"), 
