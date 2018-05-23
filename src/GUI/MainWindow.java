@@ -7,6 +7,7 @@ package GUI;
 
 import View.View;
 import controller.ControllerGraph;
+import deepspace.CombatResult;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,13 +26,19 @@ import java.awt.Component;
 public class MainWindow extends JFrame implements View{
     static ControllerGraph controller;
     private String name = "DeepSpace";
+    private SpaceStationView currentStationView;
+    private EnemyStarShipView currentEnemyView;
+    
     
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
-        
+        currentStationView=new SpaceStationView();
+        currentStationPanel.add(currentStationView);
+        currentEnemyView=new EnemyStarShipView();
+        currentEnemyPanel.add(currentEnemyView);  
         setTitle(name);
         
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -52,17 +59,63 @@ public class MainWindow extends JFrame implements View{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelPruebas = new javax.swing.JPanel();
-        seleccionados = new javax.swing.JButton();
+        currentStationPanel = new javax.swing.JPanel();
+        combatButton = new javax.swing.JButton();
+        currentEnemyPanel = new javax.swing.JPanel();
+        nextTurnButton = new javax.swing.JButton();
+        finishButton = new javax.swing.JButton();
+        discardHangarButton = new javax.swing.JButton();
+        discardButton = new javax.swing.JButton();
+        mountButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        seleccionados.setText("SELECCION");
-        seleccionados.addActionListener(new java.awt.event.ActionListener() {
+        currentStationPanel.setPreferredSize(new java.awt.Dimension(531, 527));
+
+        combatButton.setFont(new java.awt.Font("AR DESTINE", 0, 24)); // NOI18N
+        combatButton.setText("COMBATIR");
+        combatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                seleccionadosActionPerformed(evt);
+                combatButtonActionPerformed(evt);
             }
         });
+
+        currentEnemyPanel.setPreferredSize(new java.awt.Dimension(424, 136));
+
+        nextTurnButton.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
+        nextTurnButton.setText("Siguiente Turno");
+        nextTurnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextTurnButtonActionPerformed(evt);
+            }
+        });
+
+        finishButton.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
+        finishButton.setText("Salir");
+        finishButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finishButtonActionPerformed(evt);
+            }
+        });
+
+        discardHangarButton.setFont(new java.awt.Font("AR DESTINE", 0, 11)); // NOI18N
+        discardHangarButton.setText("Descartar Hangar Completo");
+        discardHangarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                discardHangarButtonActionPerformed(evt);
+            }
+        });
+
+        discardButton.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
+        discardButton.setText("Descartar");
+        discardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                discardButtonActionPerformed(evt);
+            }
+        });
+
+        mountButton.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
+        mountButton.setText("Equipar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,32 +123,90 @@ public class MainWindow extends JFrame implements View{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPruebas, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(currentStationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(mountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(discardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(discardHangarButton)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(currentEnemyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nextTurnButton, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(finishButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(combatButton, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(seleccionados)
-                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(seleccionados)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(currentStationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(currentEnemyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(combatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(nextTurnButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mountButton)
+                    .addComponent(discardButton)
+                    .addComponent(discardHangarButton)
+                    .addComponent(finishButton))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void seleccionadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionadosActionPerformed
-        for(Component c:panelPruebas.getComponents()){
-            System.out.println(((HangarView)c).getSelectedWeapons().toString());
+    private void combatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatButtonActionPerformed
+        CombatResult result= controller.combat();
+        switch (result){
+            case ENEMYWINS:
+                JOptionPane.showMessageDialog(this, "Has perdido el combate\nCumple tu castigo", name, JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case NOCOMBAT:
+                JOptionPane.showMessageDialog(this, "El combate no ha podido realizar", name, JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case STATIONESCAPES:
+                JOptionPane.showMessageDialog(this, "¡Has conseguido escapar!\n¡Eres una gallina espacial!", name, JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case STATIONWINS:
+                JOptionPane.showMessageDialog(this, "¡Has ganado el combate!\nDisfruta de tu botín.", name, JOptionPane.INFORMATION_MESSAGE);
+            case STATIONWINSANDCONVERTS:
+                if(controller.getModelToUI().getCurrentEnemy().getLoot().isGetEfficient())
+                    JOptionPane.showMessageDialog(this, "¡Has ganado el combate y ahora\ntu estación es más eficiente!", name, JOptionPane.INFORMATION_MESSAGE);
+                if(controller.getModelToUI().getCurrentEnemy().getLoot().isSpaceCity())
+                    JOptionPane.showMessageDialog(this, "¡Has ganado el combate y te\nhas convertido en una estación espacial!", name, JOptionPane.INFORMATION_MESSAGE);
+                break;
         }
+        
+    }//GEN-LAST:event_combatButtonActionPerformed
 
-    }//GEN-LAST:event_seleccionadosActionPerformed
+    private void discardHangarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardHangarButtonActionPerformed
+        controller.discardHangar();
+    }//GEN-LAST:event_discardHangarButtonActionPerformed
+
+    private void discardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_discardButtonActionPerformed
+
+    private void nextTurnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnButtonActionPerformed
+        if(!controller.nextTurn()){
+            JOptionPane.showMessageDialog(this, "No puedes avanzar de turno", name, JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_nextTurnButtonActionPerformed
+
+    private void finishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishButtonActionPerformed
+        controller.finish(0);
+    }//GEN-LAST:event_finishButtonActionPerformed
 
     @Override
     public void setController(ControllerGraph unControlador) {
@@ -104,22 +215,11 @@ public class MainWindow extends JFrame implements View{
 
     @Override
     public void updateView() {
-        /*ShieldToUI sbprueba=controller.dameUnEscudoPrueba();
-        ShieldBoosterView vistaEscudoPrueba=new ShieldBoosterView();
-        vistaEscudoPrueba.setShieldBooster(sbprueba);
-        panelPruebas.add(vistaEscudoPrueba);*/
-        /*WeaponToUI wprueba=controller.dameUnArmaPrueba();
-        WeaponView vistaArmaPrueba=new WeaponView();
-        vistaArmaPrueba.setWeapon(wprueba);
-        panelPruebas.add(vistaArmaPrueba);*/
-        /*HangarToUI hprueba=controller.dameUnHangarPrueba();
-        HangarView vistaHangarPrueba=new HangarView();
-        vistaHangarPrueba.setHangar(hprueba);
-        panelPruebas.add(vistaHangarPrueba);*/
-        SpecificDamageToUI nd=controller.dameUnSpecificDamagePrueba();
-        DamageView dv=new SpecificDamageView();
-        ((SpecificDamageView)dv).setSpecificDamage(nd);
-        panelPruebas.add(dv);
+        nextTurnButton.setEnabled(controller.getGameState()==GameState.AFTERCOMBAT);
+        combatButton.setEnabled(controller.getGameState()==GameState.INIT || controller.getGameState()==GameState.BEFORECOMBAT);
+        currentStationView.setSpaceStation(controller.getModelToUI().getCurrentStation());
+        currentEnemyView.setEnemyStarShip(controller.getModelToUI().getCurrentEnemy());
+        
         
         repaint();
         revalidate();
@@ -147,7 +247,13 @@ public class MainWindow extends JFrame implements View{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel panelPruebas;
-    private javax.swing.JButton seleccionados;
+    private javax.swing.JButton combatButton;
+    private javax.swing.JPanel currentEnemyPanel;
+    private javax.swing.JPanel currentStationPanel;
+    private javax.swing.JButton discardButton;
+    private javax.swing.JButton discardHangarButton;
+    private javax.swing.JButton finishButton;
+    private javax.swing.JButton mountButton;
+    private javax.swing.JButton nextTurnButton;
     // End of variables declaration//GEN-END:variables
 }
