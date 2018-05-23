@@ -5,6 +5,10 @@
  */
 package GUI;
 
+import deepspace.EnemyToUI;
+import java.awt.Component;
+import java.util.ArrayList;
+
 /**
  *
  * @author JuanAntonio
@@ -17,6 +21,20 @@ public class EnemyStarShipView extends javax.swing.JPanel {
     public EnemyStarShipView() {
         initComponents();
     }
+    
+    void setEnemyStarShip(EnemyToUI enemy){
+        LootView loot=new LootView();
+        DamageView damage=new DamageView();
+        
+        NombreEnemigo.setText(enemy.getName());
+        fire.setText(Float.toString(enemy.getAmmoPower()));
+        shield.setText(Float.toString(enemy.getShieldPower()));
+        Botin.removeAll();
+        Botin.add(loot);
+        Damage.removeAll();
+        Damage.add(damage);
+        repaint();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,9 +45,64 @@ public class EnemyStarShipView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        NombreEnemigo = new javax.swing.JLabel();
+        fire = new javax.swing.JLabel();
+        shield = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        Botin = new javax.swing.JPanel();
+        Damage = new javax.swing.JPanel();
 
-        jLabel1.setText("jLabel1");
+        setPreferredSize(new java.awt.Dimension(424, 136));
+
+        NombreEnemigo.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        NombreEnemigo.setText("NombreEnemigo");
+
+        fire.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        fire.setText("fire");
+
+        shield.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        shield.setText("shield");
+
+        jLabel1.setFont(new java.awt.Font("AR DESTINE", 0, 24)); // NOI18N
+        jLabel1.setText("Enemigo");
+
+        jLabel2.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel2.setText("Enemigo:");
+
+        jLabel3.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel3.setText("Potencia de Fuego:");
+
+        jLabel4.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel4.setText("Potencia de Escudo:");
+
+        Botin.setPreferredSize(new java.awt.Dimension(424, 126));
+
+        javax.swing.GroupLayout BotinLayout = new javax.swing.GroupLayout(Botin);
+        Botin.setLayout(BotinLayout);
+        BotinLayout.setHorizontalGroup(
+            BotinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        BotinLayout.setVerticalGroup(
+            BotinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 126, Short.MAX_VALUE)
+        );
+
+        Damage.setPreferredSize(new java.awt.Dimension(426, 109));
+
+        javax.swing.GroupLayout DamageLayout = new javax.swing.GroupLayout(Damage);
+        Damage.setLayout(DamageLayout);
+        DamageLayout.setHorizontalGroup(
+            DamageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        DamageLayout.setVerticalGroup(
+            DamageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 109, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -37,20 +110,58 @@ public class EnemyStarShipView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(356, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Botin, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fire)
+                                    .addComponent(NombreEnemigo)
+                                    .addComponent(shield)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 138, Short.MAX_VALUE))
+                    .addComponent(Damage, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(NombreEnemigo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(fire))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(shield))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Botin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(Damage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Botin;
+    private javax.swing.JPanel Damage;
+    private javax.swing.JLabel NombreEnemigo;
+    private javax.swing.JLabel fire;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel shield;
     // End of variables declaration//GEN-END:variables
 }
