@@ -4,18 +4,24 @@
  * and open the template in the editor.
  */
 package GUI;
-
+import deepspace.DamageToUI;
 /**
  *
  * @author JuanAntonio
  */
-public abstract class DamageView extends javax.swing.JPanel {
+public class DamageView extends javax.swing.JPanel {
 
     /**
      * Creates new form DamageView
      */
     public DamageView() {
         initComponents();
+    }
+    
+    void setDamage(DamageToUI d){
+        Armas.setText(d.getWeaponInfo());
+        Escudos.setText(Integer.toString(d.getNShields()));
+        repaint();
     }
 
     /**
@@ -27,19 +33,67 @@ public abstract class DamageView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Armas = new javax.swing.JLabel();
+        Escudos = new javax.swing.JLabel();
+
+        jLabel1.setFont(new java.awt.Font("AR DESTINE", 0, 18)); // NOI18N
+        jLabel1.setText("Pérdidas");
+
+        jLabel2.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel2.setText("Armas: ");
+
+        jLabel3.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel3.setText("Escudos: ");
+
+        Armas.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        Armas.setText("jLabel4");
+
+        Escudos.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        Escudos.setText("jLabel5");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Escudos)
+                    .addComponent(Armas))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(Armas))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(Escudos))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Armas;
+    private javax.swing.JLabel Escudos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,11 +21,7 @@ public class TestP4 {
         SuppliesPackage sp=new SuppliesPackage(1,10,1);
         SpaceStation station = new SpaceStation("Juan",sp);
         //System.out.println(station.toString());
-        ArrayList<String> nombres=new ArrayList();
-        nombres.add("Juan");
-        nombres.add("Antonio");
-        nombres.add("Pedro");
-        GameUniverse gameUniverse = new GameUniverse();
+        
         //gameUniverse.init(nombres); Revienta porque CardDealer tiene errores
         //System.out.println(station.fire());
         //station = new PowerEfficientSpaceStation(station);
@@ -66,8 +62,33 @@ public class TestP4 {
         System.out.println(damage1.toString());
         System.out.println(damage2.toString());
         
+        System.out.println("===================================================================");
+        
+        Loot loot=new Loot(1,1,1,1,1,false, true);
+        Loot loot2=new Loot(1,1,1,1,1,true, false);
+        
+        Transformation transformacion1=station.setLoot(loot);
+        System.out.format("\n%s\n",transformacion1.toString());//No se trasforma=bien
+        SpaceStation station3=new SpaceStation("Luis", sp);
+        Transformation transformacion2=station3.setLoot(loot);
+        System.out.format("\n%s\n",transformacion2.toString());//Se trasforma=bien, ya que el loot no transforma por si solo
+        Transformation transformacion3=station3.setLoot(loot2);
+        System.out.format("\n%s\n",transformacion3.toString());//Se trasforma=bien, ya que el loot no transforma por si solo
+        Transformation transformacion4=station2.setLoot(loot);
+        System.out.format("\n%s\n",transformacion4.toString());//No se trasforma=bien
+        Transformation transformacion5=station2.setLoot(loot2);
+        System.out.format("\n%s\n",transformacion5.toString());//No se trasforma=bien
         
         
+        ArrayList<String> nombres=new ArrayList();
+        nombres.add("Juan");
+        nombres.add("Antonio");
+        nombres.add("Pedro");
+        GameUniverse gameUniverse = new GameUniverse();
+        gameUniverse.init(nombres);
+        gameUniverse.makeStationEfficient();
+        //gameUniverse.createSpaceCity();
+        System.out.format("\n%s\n",gameUniverse.toString());
         
     }
     

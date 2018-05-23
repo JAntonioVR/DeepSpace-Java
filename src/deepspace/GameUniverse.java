@@ -126,7 +126,7 @@ public class GameUniverse {
                     vec.add(SpaceStations.get(i));
             }
             
-            //currentStation=new SpaceCity(currentStation,vec);
+            currentStation=new SpaceCity(currentStation,vec);
             SpaceStations.remove(currentStationIndex);
             SpaceStations.add(currentStationIndex, currentStation);
             haveSpaceCity=true;
