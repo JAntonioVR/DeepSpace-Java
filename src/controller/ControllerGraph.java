@@ -18,6 +18,9 @@ import deepspace.Hangar;
 import deepspace.HangarToUI;
 import deepspace.NumericDamageToUI;
 import deepspace.SpecificDamageToUI;
+import deepspace.EnemyToUI;
+import deepspace.LootToUI;
+import deepspace.SpaceStationToUI;
 
 
 /**
@@ -72,6 +75,19 @@ public class ControllerGraph {
     public SpecificDamageToUI dameUnSpecificDamagePrueba(){
         return model.dameUnSpecificDamagePrueba().getUIversion();
     }
+    
+    public EnemyToUI dameUnEnemyStarShipPrueba(){
+        return model.dameUnEnemyStarShipPrueba().getUIversion();
+    }
+    
+    public SpaceStationToUI dameUnSpaceStationPrueba(){
+        return model.dameUnSpaceStationPrueba().getUIversion();
+    }
+    
+    public LootToUI dameUnLootPrueba(){
+        return model.dameUnLootPrueba().getUIversion();
+    }
+    
     
     //=================================================================
     static public enum Element {

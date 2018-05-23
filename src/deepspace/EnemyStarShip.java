@@ -49,7 +49,7 @@ public class EnemyStarShip implements Copyable <EnemyStarShip>, SpaceFighter {
     }
     
     
-    EnemyToUI getUIversion(){
+    public EnemyToUI getUIversion(){
         return new EnemyToUI(this);
     }
     

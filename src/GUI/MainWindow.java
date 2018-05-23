@@ -7,6 +7,8 @@ package GUI;
 
 import View.View;
 import controller.ControllerGraph;
+import deepspace.DamageToUI;
+import deepspace.EnemyToUI;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -14,7 +16,9 @@ import deepspace.GameState;
 import deepspace.WeaponToUI;
 import deepspace.ShieldToUI;
 import deepspace.HangarToUI;
+import deepspace.LootToUI;
 import deepspace.NumericDamageToUI;
+import deepspace.SpaceStationToUI;
 import deepspace.SpecificDamageToUI;
 import java.awt.Component;
 
@@ -25,6 +29,7 @@ import java.awt.Component;
 public class MainWindow extends JFrame implements View{
     static ControllerGraph controller;
     private String name = "DeepSpace";
+    private SpaceStationView stationView;
     
     /**
      * Creates new form MainWindow
@@ -33,7 +38,10 @@ public class MainWindow extends JFrame implements View{
         initComponents();
         
         setTitle(name);
-        
+        stationView=new SpaceStationView();
+        panelPruebas.add(stationView);
+        repaint();
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -81,10 +89,10 @@ public class MainWindow extends JFrame implements View{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(panelPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(seleccionados)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -92,7 +100,7 @@ public class MainWindow extends JFrame implements View{
 
     private void seleccionadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionadosActionPerformed
         for(Component c:panelPruebas.getComponents()){
-            System.out.println(((HangarView)c).getSelectedWeapons().toString());
+            System.out.println("Haciendo algo");
         }
 
     }//GEN-LAST:event_seleccionadosActionPerformed
@@ -104,6 +112,7 @@ public class MainWindow extends JFrame implements View{
 
     @Override
     public void updateView() {
+        panelPruebas.removeAll();
         /*ShieldToUI sbprueba=controller.dameUnEscudoPrueba();
         ShieldBoosterView vistaEscudoPrueba=new ShieldBoosterView();
         vistaEscudoPrueba.setShieldBooster(sbprueba);
@@ -116,10 +125,24 @@ public class MainWindow extends JFrame implements View{
         HangarView vistaHangarPrueba=new HangarView();
         vistaHangarPrueba.setHangar(hprueba);
         panelPruebas.add(vistaHangarPrueba);*/
-        SpecificDamageToUI nd=controller.dameUnSpecificDamagePrueba();
-        DamageView dv=new SpecificDamageView();
-        ((SpecificDamageView)dv).setSpecificDamage(nd);
-        panelPruebas.add(dv);
+        /*DamageToUI nd=controller.dameUnNumericDamagePrueba();
+        DamageView dv=new DamageView();
+        dv.setDamage(nd);
+        panelPruebas.add(dv);*/
+        EnemyToUI enemy=controller.dameUnEnemyStarShipPrueba();
+        EnemyStarShipView Enemy=new EnemyStarShipView();
+        Enemy.setEnemyStarShip(enemy);
+        panelPruebas.add(Enemy);
+        
+       /*SpaceStationToUI station=controller.dameUnSpaceStationPrueba();
+        SpaceStationView Station=new SpaceStationView();
+        Station.setSpaceStation(station);
+        panelPruebas.add(Station);*/
+        
+        /*LootToUI loot=controller.dameUnLootPrueba();
+        LootView Loot=new LootView();
+        Loot.setLoot(loot);
+        panelPruebas.add(Loot);*/
         
         repaint();
         revalidate();

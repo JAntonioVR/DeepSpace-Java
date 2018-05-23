@@ -13,12 +13,16 @@ import java.util.ArrayList;
  * @author pedro
  */
 public class SpaceStationView extends javax.swing.JPanel {
-
+    private HangarView hangarView;
     /**
      * Creates new form SpaceStationView
      */
     public SpaceStationView() {
         initComponents();
+        
+        hangarView=new HangarView();
+        Hangar.add(hangarView);
+        repaint();
     }
 
     void setSpaceStation(SpaceStationToUI station){
@@ -48,8 +52,10 @@ public class SpaceStationView extends javax.swing.JPanel {
             wv.setWeapon(w);
             Armas.add(wv);
         }
-        Hangar.add(h);
         
+        Hangar.add(h);
+        repaint();
+        revalidate();
         
     }
     /**
@@ -77,28 +83,28 @@ public class SpaceStationView extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de la estación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 12))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("AR DESTINE", 0, 10)); // NOI18N
         jLabel2.setText("Potencia de Ataque: ");
 
-        Ataque.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        Ataque.setFont(new java.awt.Font("AR DESTINE", 0, 10)); // NOI18N
         Ataque.setText("jLabel3");
 
-        jLabel3.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("AR DESTINE", 0, 10)); // NOI18N
         jLabel3.setText("Potencia de Defensa:");
 
-        Defensa.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        Defensa.setFont(new java.awt.Font("AR DESTINE", 0, 10)); // NOI18N
         Defensa.setText("jLabel4");
 
-        jLabel5.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("AR DESTINE", 0, 10)); // NOI18N
         jLabel5.setText("Nivel de Combustible: ");
 
-        Combustible.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        Combustible.setFont(new java.awt.Font("AR DESTINE", 0, 10)); // NOI18N
         Combustible.setText("jLabel6");
 
-        jLabel6.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("AR DESTINE", 0, 10)); // NOI18N
         jLabel6.setText("Medallas: ");
 
-        Medallas.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        Medallas.setFont(new java.awt.Font("AR DESTINE", 0, 10)); // NOI18N
         Medallas.setText("jLabel7");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -108,25 +114,28 @@ public class SpaceStationView extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Ataque))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Defensa)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Defensa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(Ataque)
+                        .addGap(0, 17, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Medallas))
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Combustible)
-                .addGap(43, 43, 43))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Medallas)
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel5)
+                        .addGap(5, 5, 5)
+                        .addComponent(Combustible)))
+                .addGap(74, 74, 74))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,68 +158,38 @@ public class SpaceStationView extends javax.swing.JPanel {
 
         Armas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Armas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 12))); // NOI18N
 
-        javax.swing.GroupLayout ArmasLayout = new javax.swing.GroupLayout(Armas);
-        Armas.setLayout(ArmasLayout);
-        ArmasLayout.setHorizontalGroup(
-            ArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        ArmasLayout.setVerticalGroup(
-            ArmasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 101, Short.MAX_VALUE)
-        );
-
         Escudos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escudos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 12))); // NOI18N
 
-        javax.swing.GroupLayout EscudosLayout = new javax.swing.GroupLayout(Escudos);
-        Escudos.setLayout(EscudosLayout);
-        EscudosLayout.setHorizontalGroup(
-            EscudosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        EscudosLayout.setVerticalGroup(
-            EscudosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 118, Short.MAX_VALUE)
-        );
-
         Hangar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hangar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 12))); // NOI18N
-
-        javax.swing.GroupLayout HangarLayout = new javax.swing.GroupLayout(Hangar);
-        Hangar.setLayout(HangarLayout);
-        HangarLayout.setHorizontalGroup(
-            HangarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        HangarLayout.setVerticalGroup(
-            HangarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 102, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Hangar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Escudos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Armas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(Escudos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Armas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(Hangar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Armas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Escudos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Hangar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Armas, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Escudos, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Hangar, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

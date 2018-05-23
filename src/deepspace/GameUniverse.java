@@ -250,6 +250,27 @@ public class GameUniverse {
         
     }
     
+    public EnemyStarShip dameUnEnemyStarShipPrueba(){
+        return currentEnemy;
+    }
+    
+    public SpaceStation dameUnSpaceStationPrueba(){
+        int nh=3;
+        int nw=dice.initWithNWeapons();
+        int ns=dice.initWithNShields();
+        Loot l=new Loot(0,nw,ns,ns,nh);
+        currentStation.setLoot(l);
+        return currentStation;
+    }
+    
+    public Loot dameUnLootPrueba(){
+        int nh=3;
+        int nw=dice.initWithNWeapons();
+        int ns=dice.initWithNShields();
+        Loot l=new Loot(0,nw,ns,ns,nh);
+        return l;
+    }
+    
     @Override
     public String toString(){
         String res;

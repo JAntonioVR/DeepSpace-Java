@@ -25,6 +25,7 @@ public class LootView extends javax.swing.JPanel {
         Hangar.setText(Integer.toString(loot.getnHangars()));
         Medallas.setText(Integer.toString(loot.getnMedals()));
         repaint();
+        revalidate();
     }
 
     /**
@@ -36,7 +37,6 @@ public class LootView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -48,37 +48,34 @@ public class LootView extends javax.swing.JPanel {
         Combustible = new javax.swing.JLabel();
         Medallas = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("AR DESTINE", 0, 18)); // NOI18N
-        jLabel1.setText("Botín");
-
-        jLabel2.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         jLabel2.setText("Armas:");
 
-        jLabel3.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         jLabel3.setText("Escudos:");
 
-        jLabel4.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         jLabel4.setText("Tamaño del Hangar:");
 
-        jLabel5.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         jLabel5.setText("Combustible");
 
-        jLabel6.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         jLabel6.setText("Medallas:");
 
-        Armas.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        Armas.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         Armas.setText("jLabel7");
 
-        Escudos.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        Escudos.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         Escudos.setText("jLabel8");
 
-        Hangar.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        Hangar.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         Hangar.setText("jLabel9");
 
-        Combustible.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        Combustible.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         Combustible.setText("jLabel10");
 
-        Medallas.setFont(new java.awt.Font("AR DESTINE", 0, 15)); // NOI18N
+        Medallas.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         Medallas.setText("jLabel11");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -86,56 +83,54 @@ public class LootView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Escudos))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Hangar)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Escudos)
-                            .addComponent(Armas))
-                        .addGap(130, 130, 130)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Medallas))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Combustible))))
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Medallas))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Armas)
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Hangar)))
+                        .addComponent(Combustible)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel5)
-                    .addComponent(Armas)
-                    .addComponent(Combustible))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6)
-                    .addComponent(Escudos)
-                    .addComponent(Medallas))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(Hangar))
-                .addGap(0, 9, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Armas)
+                        .addComponent(jLabel5)
+                        .addComponent(Combustible)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(Escudos))
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(Hangar)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(Medallas))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -146,7 +141,6 @@ public class LootView extends javax.swing.JPanel {
     private javax.swing.JLabel Escudos;
     private javax.swing.JLabel Hangar;
     private javax.swing.JLabel Medallas;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
