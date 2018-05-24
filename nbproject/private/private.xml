@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/pedro/Trabajos/2º%20Cuatrimestre/PDOO/DeepSpace-Java/src/GUI/HangarView.java</file>
-            <file>file:/home/pedro/Trabajos/2º%20Cuatrimestre/PDOO/DeepSpace-Java/src/GUI/DamageView.java</file>
-            <file>file:/home/pedro/Trabajos/2º%20Cuatrimestre/PDOO/DeepSpace-Java/src/GUI/WeaponView.java</file>
-            <file>file:/home/pedro/Trabajos/2º%20Cuatrimestre/PDOO/DeepSpace-Java/src/GUI/EnemyStarShipView.java</file>
-            <file>file:/home/pedro/Trabajos/2º%20Cuatrimestre/PDOO/DeepSpace-Java/src/GUI/ShieldBoosterView.java</file>
-            <file>file:/home/pedro/Trabajos/2º%20Cuatrimestre/PDOO/DeepSpace-Java/src/GUI/CombatElementView.java</file>
-            <file>file:/home/pedro/Trabajos/2º%20Cuatrimestre/PDOO/DeepSpace-Java/src/GUI/LootView.java</file>
-            <file>file:/home/pedro/Trabajos/2º%20Cuatrimestre/PDOO/DeepSpace-Java/src/main/Main.java</file>
-            <file>file:/home/pedro/Trabajos/2º%20Cuatrimestre/PDOO/DeepSpace-Java/src/GUI/GameUniverse.java</file>
+            <file>file:/C:/Users/JuanAntonio/Documents/GitHub/DeepSpace-Java/src/controller/ControllerGraph.java</file>
+            <file>file:/C:/Users/JuanAntonio/Documents/GitHub/DeepSpace-Java/src/deepspace/GameState.java</file>
+            <file>file:/C:/Users/JuanAntonio/Documents/GitHub/DeepSpace-Java/src/GUI/EnemyStarShipView.java</file>
+            <file>file:/C:/Users/JuanAntonio/Documents/GitHub/DeepSpace-Java/src/deepspace/GameUniverse.java</file>
+            <file>file:/C:/Users/JuanAntonio/Documents/GitHub/DeepSpace-Java/src/UI/TextUI.java</file>
+            <file>file:/C:/Users/JuanAntonio/Documents/GitHub/DeepSpace-Java/src/GUI/MainWindow.java</file>
+            <file>file:/C:/Users/JuanAntonio/Documents/GitHub/DeepSpace-Java/src/GUI/SpaceStationView.java</file>
         </group>
     </open-files>
 </project-private>

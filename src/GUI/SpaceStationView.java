@@ -28,6 +28,8 @@ public class SpaceStationView extends javax.swing.JPanel {
     void setSpaceStation(SpaceStationToUI station){
         HangarView h=new HangarView();
         
+        
+        
         Ataque.setText(Float.toString(station.getAmmoPower()));
         Defensa.setText(Float.toString(station.getShieldPower()));
         Combustible.setText(Float.toString(station.getFuelUnits()));
@@ -80,6 +82,8 @@ public class SpaceStationView extends javax.swing.JPanel {
         Armas = new javax.swing.JPanel();
         Escudos = new javax.swing.JPanel();
         Hangar = new javax.swing.JPanel();
+
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estación espacial", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 12))); // NOI18N
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de la estación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 12))); // NOI18N
 
@@ -161,6 +165,17 @@ public class SpaceStationView extends javax.swing.JPanel {
         Escudos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escudos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 12))); // NOI18N
 
         Hangar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hangar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 12))); // NOI18N
+
+        javax.swing.GroupLayout HangarLayout = new javax.swing.GroupLayout(Hangar);
+        Hangar.setLayout(HangarLayout);
+        HangarLayout.setHorizontalGroup(
+            HangarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        HangarLayout.setVerticalGroup(
+            HangarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 79, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
