@@ -189,6 +189,8 @@ public class MainWindow extends JFrame implements View{
                 break;
         }
         
+        updateView();
+        
     }//GEN-LAST:event_combatButtonActionPerformed
 
     private void discardHangarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardHangarButtonActionPerformed
