@@ -204,7 +204,9 @@ public class MainWindow extends JFrame implements View{
 
     private void discardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardButtonActionPerformed
         ArrayList<Integer> seleccion=currentStationView.getSelectedWeapons();
-        controller.discardMountedElements(ControllerGraph.Element.WEAPON, ERROR);
+        for(int s:seleccion)controller.discardMountedElements(ControllerGraph.Element.WEAPON, s);
+        ArrayList<Integer> seleccion2=currentStationView.getSelectedShields();
+        for(int e:seleccion2) controller.discardMountedElements(ControllerGraph.Element.SHIELD, e);
     }//GEN-LAST:event_discardButtonActionPerformed
 
     private void nextTurnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnButtonActionPerformed
