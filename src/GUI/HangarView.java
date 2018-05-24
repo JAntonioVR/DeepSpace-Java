@@ -64,6 +64,7 @@ public class HangarView extends javax.swing.JPanel {
             selectedWeapons.add(k-nShields);
         }
         return selectedWeapons;
+        
     }
    
     ArrayList<Integer> getSelectedShields(){
