@@ -71,6 +71,14 @@ public class SpaceStationView extends javax.swing.JPanel {
         revalidate();
         
     }
+    
+    ArrayList<Integer> getSelectedWeapons(){
+        return hangarView.getSelectedWeapons();
+    }
+    
+    ArrayList<Integer> getSelectedShields(){
+        return hangarView.getSelectedShields();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
