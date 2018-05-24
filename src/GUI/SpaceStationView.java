@@ -37,6 +37,7 @@ public class SpaceStationView extends javax.swing.JPanel {
         
         Armas.removeAll();
         Escudos.removeAll(); 
+        Damage.removeAll();
         ArrayList<WeaponToUI>weapons=station.getWeapons();
         ArrayList<ShieldToUI>shields=station.getShieldBoosters();
         ShieldBoosterView sbv;

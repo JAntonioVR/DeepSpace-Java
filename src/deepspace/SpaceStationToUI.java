@@ -54,7 +54,7 @@ public class SpaceStationToUI {
         // MIGUEL: Añadido de  pendingDamage  y su consultor
         
         Damage d = station.getPendingDamage();
-        if (d != null) {
+        if (!d.hasNoEffect()) {
           pendingDamage = d.getUIversion();
         } else {
           pendingDamage = null;

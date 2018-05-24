@@ -20,7 +20,7 @@ public class SpaceStation implements SpaceFighter{
     private String name;
     private int nMedals;
     private float shieldPower;
-    private Damage pendingDamage;
+    private Damage pendingDamage=new NumericDamage(0,0);
     private ArrayList<Weapon> weapons=new ArrayList<>();
     private ArrayList<ShieldBooster> shieldBoosters=new ArrayList<>();
     private Hangar hangar;
@@ -55,7 +55,7 @@ public class SpaceStation implements SpaceFighter{
     
     private void cleanPendingDamage(){
         if(pendingDamage.hasNoEffect())
-            pendingDamage=null;
+            pendingDamage=new NumericDamage(0,0);
     }
     
     public void cleanUpMountedItems(){
@@ -278,7 +278,7 @@ public class SpaceStation implements SpaceFighter{
     }
     
     public boolean validState(){
-        return pendingDamage.hasNoEffect() || pendingDamage==null;
+        return pendingDamage.hasNoEffect();
     }
     
     @Override
