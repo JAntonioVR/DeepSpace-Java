@@ -40,7 +40,6 @@ public class EnemyView extends javax.swing.JPanel {
         shieldPowerText = new javax.swing.JLabel();
         shieldPower = new javax.swing.JLabel();
         lootPanel = new javax.swing.JPanel();
-        damagePanel = new javax.swing.JPanel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Enemigo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 12))); // NOI18N
 
@@ -86,8 +85,7 @@ public class EnemyView extends javax.swing.JPanel {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(44, 44, 44)
                                 .addComponent(name)))
-                        .addGap(0, 155, Short.MAX_VALUE))
-                    .addComponent(damagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 155, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -107,9 +105,7 @@ public class EnemyView extends javax.swing.JPanel {
                     .addComponent(shieldPower))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lootPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(damagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -127,8 +123,8 @@ public class EnemyView extends javax.swing.JPanel {
         
         lootPanel.removeAll();
         lootPanel.add(lootView);
-        damagePanel.removeAll();
-        damagePanel.add(damageView);
+        /*damagePanel.removeAll();
+        damagePanel.add(damageView);*/
         repaint();
         revalidate();
     }
@@ -137,7 +133,6 @@ public class EnemyView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ammoPower;
     private javax.swing.JLabel ammoPowerText;
-    private javax.swing.JPanel damagePanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel lootPanel;
     private javax.swing.JLabel name;

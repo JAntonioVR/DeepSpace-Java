@@ -39,11 +39,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="combatButton" alignment="0" max="32767" attributes="0"/>
                   <Component id="currentEnemyPanel" pref="436" max="32767" attributes="0"/>
+                  <Component id="AdjustedDamage" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="nextTurnButton" alignment="0" pref="142" max="32767" attributes="0"/>
-                          <Component id="finishButton" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="finishButton" min="-2" pref="142" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="nextTurnButton" min="-2" pref="142" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -56,21 +56,25 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="currentStationPanel" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="currentEnemyPanel" pref="435" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="combatButton" min="-2" pref="57" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="currentStationPanel" pref="534" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="currentEnemyPanel" min="-2" pref="265" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nextTurnButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="AdjustedDamage" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="combatButton" min="-2" pref="57" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="mountButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="discardButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="discardHangarButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="finishButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nextTurnButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -160,6 +164,10 @@
           <Dimension value="[424, 136]"/>
         </Property>
       </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+    </Container>
+    <Container class="javax.swing.JPanel" name="AdjustedDamage">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
     </Container>

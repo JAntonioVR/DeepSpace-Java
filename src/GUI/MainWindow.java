@@ -30,6 +30,7 @@ public class MainWindow extends JFrame implements View{
     private String name = "DeepSpace";
     private SpaceStationView currentStationView;
     private EnemyView currentEnemyView;
+    private DamageView pendingDamageView;
     
     
     /**
@@ -40,7 +41,8 @@ public class MainWindow extends JFrame implements View{
         currentStationView=new SpaceStationView();
         currentStationPanel.add(currentStationView);
         currentEnemyView=new EnemyView();
-        currentEnemyPanel.add(currentEnemyView);  
+        currentEnemyPanel.add(currentEnemyView);
+        AdjustedDamage.setVisible(false);
         setTitle(name);
         
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -69,6 +71,7 @@ public class MainWindow extends JFrame implements View{
         discardButton = new javax.swing.JButton();
         mountButton = new javax.swing.JButton();
         currentEnemyPanel = new javax.swing.JPanel();
+        AdjustedDamage = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,10 +150,11 @@ public class MainWindow extends JFrame implements View{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(combatButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(currentEnemyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                    .addComponent(AdjustedDamage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nextTurnButton, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                            .addComponent(finishButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nextTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -159,19 +163,22 @@ public class MainWindow extends JFrame implements View{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(currentStationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(currentEnemyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(combatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(currentStationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                        .addGap(14, 14, 14))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(currentEnemyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nextTurnButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(AdjustedDamage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(combatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mountButton)
                     .addComponent(discardButton)
                     .addComponent(discardHangarButton)
-                    .addComponent(finishButton))
+                    .addComponent(finishButton)
+                    .addComponent(nextTurnButton))
                 .addContainerGap())
         );
 
@@ -250,6 +257,16 @@ public class MainWindow extends JFrame implements View{
         currentStationView.setSpaceStation(controller.getModelToUI().getCurrentStation());
         currentEnemyView.setEnemyStarShip(controller.getModelToUI().getCurrentEnemy());
         currentEnemyView.setVisible(controller.getGameState()==AFTERCOMBAT);
+        AdjustedDamage.removeAll();
+        if(controller.getModelToUI().getCurrentStation().getPendingDamage()!=null){
+            DamageView D=new DamageView();
+            D.setDamage(controller.getModelToUI().getCurrentStation().getPendingDamage());
+            AdjustedDamage.add(D);
+            AdjustedDamage.setVisible(true);
+        }
+        else{
+            AdjustedDamage.setVisible(false);
+        }
         
         /*LootToUI loot=controller.dameUnLootPrueba();
         LootView lv=new LootView();
@@ -284,6 +301,7 @@ public class MainWindow extends JFrame implements View{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel AdjustedDamage;
     private javax.swing.JButton combatButton;
     private javax.swing.JPanel currentEnemyPanel;
     private javax.swing.JPanel currentStationPanel;

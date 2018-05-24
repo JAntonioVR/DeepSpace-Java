@@ -151,7 +151,6 @@ public class ControllerGraph {
                   model.discardShieldBoosterInHangar(option);
               break;
         }
-        view.updateView();
     }
     
     public void discardMountedElements(Element element, int option) {
@@ -163,7 +162,6 @@ public class ControllerGraph {
               model.discardShieldBooster(option);
               break;
         }
-        view.updateView();
         
     }
    
