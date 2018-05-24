@@ -17,7 +17,6 @@ import deepspace.ShieldToUI;
 import deepspace.HangarToUI;
 import deepspace.LootToUI;
 import deepspace.NumericDamageToUI;
-import deepspace.SpaceStationToUI;
 import deepspace.SpecificDamageToUI;
 import java.awt.Component;
 
@@ -29,7 +28,7 @@ public class MainWindow extends JFrame implements View{
     static ControllerGraph controller;
     private String name = "DeepSpace";
     private SpaceStationView currentStationView;
-    private EnemyStarShipView currentEnemyView;
+    private EnemyView currentEnemyView;
     
     
     /**
@@ -39,11 +38,10 @@ public class MainWindow extends JFrame implements View{
         initComponents();
         currentStationView=new SpaceStationView();
         currentStationPanel.add(currentStationView);
-        currentEnemyView=new EnemyStarShipView();
+        currentEnemyView=new EnemyView();
         currentEnemyPanel.add(currentEnemyView);  
         setTitle(name);
-        repaint();
-        setLocationRelativeTo(null);
+        
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -64,12 +62,12 @@ public class MainWindow extends JFrame implements View{
 
         currentStationPanel = new javax.swing.JPanel();
         combatButton = new javax.swing.JButton();
-        currentEnemyPanel = new javax.swing.JPanel();
         nextTurnButton = new javax.swing.JButton();
         finishButton = new javax.swing.JButton();
         discardHangarButton = new javax.swing.JButton();
         discardButton = new javax.swing.JButton();
         mountButton = new javax.swing.JButton();
+        currentEnemyPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,8 +80,6 @@ public class MainWindow extends JFrame implements View{
                 combatButtonActionPerformed(evt);
             }
         });
-
-        currentEnemyPanel.setPreferredSize(new java.awt.Dimension(424, 136));
 
         nextTurnButton.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         nextTurnButton.setText("Siguiente Turno");
@@ -120,6 +116,8 @@ public class MainWindow extends JFrame implements View{
         mountButton.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         mountButton.setText("Equipar");
 
+        currentEnemyPanel.setPreferredSize(new java.awt.Dimension(424, 136));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,28 +134,28 @@ public class MainWindow extends JFrame implements View{
                         .addComponent(discardHangarButton)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(currentEnemyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(combatButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(nextTurnButton, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                             .addComponent(finishButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(combatButton, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+                    .addComponent(currentEnemyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(currentStationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(currentEnemyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(currentEnemyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(combatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                        .addGap(18, 18, 18)
                         .addComponent(nextTurnButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mountButton)
                     .addComponent(discardButton)
@@ -222,6 +220,12 @@ public class MainWindow extends JFrame implements View{
         combatButton.setEnabled(controller.getGameState()==GameState.INIT || controller.getGameState()==GameState.BEFORECOMBAT);
         currentStationView.setSpaceStation(controller.getModelToUI().getCurrentStation());
         currentEnemyView.setEnemyStarShip(controller.getModelToUI().getCurrentEnemy());
+        
+        /*LootToUI loot=controller.dameUnLootPrueba();
+        LootView lv=new LootView();
+        lv.setLoot(loot);
+        panelPruebas.add(lv);*/
+        
         
         
         repaint();

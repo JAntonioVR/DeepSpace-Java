@@ -48,6 +48,8 @@ public class LootView extends javax.swing.JPanel {
         Combustible = new javax.swing.JLabel();
         Medallas = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Botín", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 11))); // NOI18N
+
         jLabel2.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         jLabel2.setText("Armas:");
 
@@ -55,7 +57,7 @@ public class LootView extends javax.swing.JPanel {
         jLabel3.setText("Escudos:");
 
         jLabel4.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
-        jLabel4.setText("Tamaño del Hangar:");
+        jLabel4.setText("Hangar:");
 
         jLabel5.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         jLabel5.setText("Combustible");
