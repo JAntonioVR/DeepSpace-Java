@@ -18,8 +18,8 @@ public class WeaponView extends CombatElementView {
      * Creates new form WeaponView
      */
     public WeaponView() {
-        setOpaque(selected);
         initComponents();
+        setOpaque(selected);
     }
     
     @Override    

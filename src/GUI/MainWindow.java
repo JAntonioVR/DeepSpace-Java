@@ -115,6 +115,11 @@ public class MainWindow extends JFrame implements View{
 
         mountButton.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         mountButton.setText("Equipar");
+        mountButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mountButtonMouseClicked(evt);
+            }
+        });
         mountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mountButtonActionPerformed(evt);
@@ -222,10 +227,17 @@ public class MainWindow extends JFrame implements View{
 
     private void mountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mountButtonActionPerformed
         ArrayList<Integer> seleccion=currentStationView.getSelectedWeaponsFromHangar();
-        for(int s:seleccion)controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.WEAPON,s);
+        for(int i=0; i<seleccion.size(); i++)controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.WEAPON,seleccion.get(i));
         ArrayList<Integer> seleccion2=currentStationView.getSelectedShieldsFromHangar();
-        for(int e:seleccion2) controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.SHIELD, e);
+        for(int i=0; i<seleccion2.size(); i++)controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.SHIELD, seleccion.get(i));
+        //updateView();
+        System.out.format("\n%s\n",seleccion.toString());
+        System.out.format("\n%s\n",seleccion2.toString());
     }//GEN-LAST:event_mountButtonActionPerformed
+
+    private void mountButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mountButtonMouseClicked
+
+    }//GEN-LAST:event_mountButtonMouseClicked
 
     @Override
     public void setController(ControllerGraph unControlador) {
