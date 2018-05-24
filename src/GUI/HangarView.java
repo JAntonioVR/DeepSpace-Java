@@ -25,7 +25,6 @@ public class HangarView extends javax.swing.JPanel {
     }
     
     void setHangar(HangarToUI h){
-        System.out.println(h.getMaxElements()+","+h.getShieldBoosters().size()+","+h.getWeapons().size());
         ArrayList<WeaponToUI> weapons=h.getWeapons();
         nWeapons=weapons.size();
         ArrayList<ShieldToUI> shields=h.getShieldBoosters();
