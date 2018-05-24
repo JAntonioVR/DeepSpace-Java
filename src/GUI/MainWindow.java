@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import deepspace.GameState;
+import static deepspace.GameState.AFTERCOMBAT;
 import deepspace.WeaponToUI;
 import deepspace.ShieldToUI;
 import deepspace.HangarToUI;
@@ -209,9 +210,9 @@ public class MainWindow extends JFrame implements View{
 
     private void discardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardButtonActionPerformed
         ArrayList<Integer> seleccion=currentStationView.getSelectedWeapons();
-        for(int s:seleccion)controller.discardMountedElements(ControllerGraph.Element.WEAPON, s);
+        for(int i=seleccion.size()-1; i>=0; i--)controller.discardMountedElements(ControllerGraph.Element.WEAPON, seleccion.get(i));
         ArrayList<Integer> seleccion2=currentStationView.getSelectedShields();
-        for(int e:seleccion2) controller.discardMountedElements(ControllerGraph.Element.SHIELD, e);
+        for(int i=seleccion2.size()-1; i>=0; i--) controller.discardMountedElements(ControllerGraph.Element.SHIELD, seleccion2.get(i));
         updateView();
     }//GEN-LAST:event_discardButtonActionPerformed
 
@@ -227,10 +228,10 @@ public class MainWindow extends JFrame implements View{
 
     private void mountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mountButtonActionPerformed
         ArrayList<Integer> seleccion=currentStationView.getSelectedWeaponsFromHangar();
-        for(int i=0; i<seleccion.size(); i++)controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.WEAPON,seleccion.get(i));
+        for(int i=seleccion.size()-1; i>=0; i--)controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.WEAPON,seleccion.get(i));
         ArrayList<Integer> seleccion2=currentStationView.getSelectedShieldsFromHangar();
-        for(int i=0; i<seleccion2.size(); i++)controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.SHIELD, seleccion2.get(i));
-        //updateView();
+        for(int i=seleccion2.size()-1; i>=0; i--)controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.SHIELD, seleccion2.get(i));
+        updateView();
     }//GEN-LAST:event_mountButtonActionPerformed
 
     private void mountButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mountButtonMouseClicked
@@ -248,6 +249,7 @@ public class MainWindow extends JFrame implements View{
         combatButton.setEnabled(controller.getGameState()==GameState.INIT || controller.getGameState()==GameState.BEFORECOMBAT);
         currentStationView.setSpaceStation(controller.getModelToUI().getCurrentStation());
         currentEnemyView.setEnemyStarShip(controller.getModelToUI().getCurrentEnemy());
+        currentEnemyView.setVisible(controller.getGameState()==AFTERCOMBAT);
         
         /*LootToUI loot=controller.dameUnLootPrueba();
         LootView lv=new LootView();
