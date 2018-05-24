@@ -65,7 +65,7 @@
                       <Component id="nextTurnButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" pref="16" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="mountButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="discardButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -149,6 +149,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Equipar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mountButtonActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="currentEnemyPanel">
       <Properties>

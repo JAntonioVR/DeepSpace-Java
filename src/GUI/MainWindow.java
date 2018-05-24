@@ -115,6 +115,11 @@ public class MainWindow extends JFrame implements View{
 
         mountButton.setFont(new java.awt.Font("AR DESTINE", 0, 12)); // NOI18N
         mountButton.setText("Equipar");
+        mountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mountButtonActionPerformed(evt);
+            }
+        });
 
         currentEnemyPanel.setPreferredSize(new java.awt.Dimension(424, 136));
 
@@ -155,7 +160,7 @@ public class MainWindow extends JFrame implements View{
                         .addComponent(combatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(nextTurnButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mountButton)
                     .addComponent(discardButton)
@@ -210,6 +215,13 @@ public class MainWindow extends JFrame implements View{
     private void finishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishButtonActionPerformed
         controller.finish(0);
     }//GEN-LAST:event_finishButtonActionPerformed
+
+    private void mountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mountButtonActionPerformed
+        ArrayList<Integer> seleccion=currentStationView.getSelectedWeapons();
+        for(int s:seleccion)controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.WEAPON,s);
+        ArrayList<Integer> seleccion2=currentStationView.getSelectedShields();
+        for(int e:seleccion2) controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.SHIELD, e);
+    }//GEN-LAST:event_mountButtonActionPerformed
 
     @Override
     public void setController(ControllerGraph unControlador) {
