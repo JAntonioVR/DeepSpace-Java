@@ -101,11 +101,15 @@ public class SpaceStationView extends javax.swing.JPanel {
     }
     
     ArrayList<Integer> getSelectedWeaponsFromHangar(){
-        return hangarView.getSelectedWeapons();
+        ArrayList<Integer> selectedWeapons=new ArrayList();
+        for(Component c:Hangar.getComponents()) selectedWeapons=((HangarView) c).getSelectedWeapons();
+        return selectedWeapons;
     }
     
     ArrayList<Integer> getSelectedShieldsFromHangar(){
-        return hangarView.getSelectedShields();
+        ArrayList<Integer> selectedShields=new ArrayList();
+        for(Component c:Hangar.getComponents()) selectedShields=((HangarView) c).getSelectedShields();
+        return selectedShields;
     }
     /**
      * This method is called from within the constructor to initialize the form.

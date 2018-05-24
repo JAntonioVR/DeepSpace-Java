@@ -229,10 +229,8 @@ public class MainWindow extends JFrame implements View{
         ArrayList<Integer> seleccion=currentStationView.getSelectedWeaponsFromHangar();
         for(int i=0; i<seleccion.size(); i++)controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.WEAPON,seleccion.get(i));
         ArrayList<Integer> seleccion2=currentStationView.getSelectedShieldsFromHangar();
-        for(int i=0; i<seleccion2.size(); i++)controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.SHIELD, seleccion.get(i));
+        for(int i=0; i<seleccion2.size(); i++)controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.SHIELD, seleccion2.get(i));
         //updateView();
-        System.out.format("\n%s\n",seleccion.toString());
-        System.out.format("\n%s\n",seleccion2.toString());
     }//GEN-LAST:event_mountButtonActionPerformed
 
     private void mountButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mountButtonMouseClicked
