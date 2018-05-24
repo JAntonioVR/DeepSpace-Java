@@ -38,6 +38,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="combatButton" alignment="0" max="32767" attributes="0"/>
+                  <Component id="currentEnemyPanel" pref="436" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="nextTurnButton" alignment="0" pref="142" max="32767" attributes="0"/>
@@ -45,7 +46,6 @@
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="currentEnemyPanel" pref="436" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -58,14 +58,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="currentStationPanel" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="currentEnemyPanel" min="-2" pref="411" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="currentEnemyPanel" pref="435" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="combatButton" min="-2" pref="57" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="nextTurnButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" pref="16" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="mountButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="discardButton" alignment="3" min="-2" max="-2" attributes="0"/>

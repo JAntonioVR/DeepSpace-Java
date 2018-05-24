@@ -25,6 +25,7 @@ public class HangarView extends javax.swing.JPanel {
     }
     
     void setHangar(HangarToUI h){
+        System.out.println(h.getMaxElements()+","+h.getShieldBoosters().size()+","+h.getWeapons().size());
         ArrayList<WeaponToUI> weapons=h.getWeapons();
         nWeapons=weapons.size();
         ArrayList<ShieldToUI> shields=h.getShieldBoosters();
@@ -118,8 +119,8 @@ public class HangarView extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(capacidad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

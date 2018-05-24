@@ -52,7 +52,7 @@ public class GameUniverse {
         currentStation=SpaceStations.get(currentStationIndex);
         currentEnemy=dealer.nextEnemy();
         gamestate.next(turns,names.size());
-        } 
+        }
     }
     
     public CombatResult combat(){

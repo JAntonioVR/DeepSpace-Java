@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package GUI;
+import controller.ControllerGraph;
+import deepspace.HangarToUI;
 import deepspace.ShieldToUI;
 import deepspace.SpaceStationToUI;
 import deepspace.WeaponToUI;
@@ -27,23 +29,14 @@ public class SpaceStationView extends javax.swing.JPanel {
     }
 
     void setSpaceStation(SpaceStationToUI station){
-        HangarView h=new HangarView();
+
         Ataque.setText(Float.toString(station.getAmmoPower()));
         Defensa.setText(Float.toString(station.getShieldPower()));
         Combustible.setText(Float.toString(station.getFuelUnits()));
         Medallas.setText(Integer.toString(station.getnMedals()));
         
         Armas.removeAll();
-        Escudos.removeAll();
-        if(station.getHangar()!=null){
-            h.setHangar(station.getHangar());
-            Hangar.add(h);
-        }
-        else{
-            Hangar.setVisible(false);
-        }
-        
-        
+        Escudos.removeAll(); 
         ArrayList<WeaponToUI>weapons=station.getWeapons();
         ArrayList<ShieldToUI>shields=station.getShieldBoosters();
         ShieldBoosterView sbv;
@@ -65,6 +58,15 @@ public class SpaceStationView extends javax.swing.JPanel {
         }
         else{
             Damage.setVisible(false);
+        }
+        if(station.getHangar()!=null){
+            Hangar.removeAll();
+            HangarView h=new HangarView();
+            h.setHangar(station.getHangar());
+            Hangar.add(h);
+        }
+        else{
+            Hangar.setVisible(false);
         }
         
         
@@ -209,19 +211,6 @@ public class SpaceStationView extends javax.swing.JPanel {
 
         Escudos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escudos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 12))); // NOI18N
 
-        Hangar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hangar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 12))); // NOI18N
-
-        javax.swing.GroupLayout HangarLayout = new javax.swing.GroupLayout(Hangar);
-        Hangar.setLayout(HangarLayout);
-        HangarLayout.setHorizontalGroup(
-            HangarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        HangarLayout.setVerticalGroup(
-            HangarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 56, Short.MAX_VALUE)
-        );
-
         Damage.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Daño pendiente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AR DESTINE", 0, 11))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -246,11 +235,11 @@ public class SpaceStationView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(Armas, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(Escudos, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(Hangar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Damage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

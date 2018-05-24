@@ -278,7 +278,7 @@ public class SpaceStation implements SpaceFighter{
     }
     
     public boolean validState(){
-        return pendingDamage.hasNoEffect();
+        return pendingDamage.hasNoEffect() || pendingDamage==null;
     }
     
     @Override
