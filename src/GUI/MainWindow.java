@@ -203,7 +203,8 @@ public class MainWindow extends JFrame implements View{
     }//GEN-LAST:event_discardHangarButtonActionPerformed
 
     private void discardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardButtonActionPerformed
-        // TODO add your handling code here:
+        ArrayList<Integer> seleccion=currentStationView.getSelectedWeapons();
+        controller.discardMountedElements(ControllerGraph.Element.WEAPON, ERROR);
     }//GEN-LAST:event_discardButtonActionPerformed
 
     private void nextTurnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnButtonActionPerformed
@@ -217,9 +218,9 @@ public class MainWindow extends JFrame implements View{
     }//GEN-LAST:event_finishButtonActionPerformed
 
     private void mountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mountButtonActionPerformed
-        ArrayList<Integer> seleccion=currentStationView.getSelectedWeapons();
+        ArrayList<Integer> seleccion=currentStationView.getSelectedWeaponsFromHangar();
         for(int s:seleccion)controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.WEAPON,s);
-        ArrayList<Integer> seleccion2=currentStationView.getSelectedShields();
+        ArrayList<Integer> seleccion2=currentStationView.getSelectedShieldsFromHangar();
         for(int e:seleccion2) controller.mountDiscardFromHangar(ControllerGraph.Operation.MOUNT, ControllerGraph.Element.SHIELD, e);
     }//GEN-LAST:event_mountButtonActionPerformed
 

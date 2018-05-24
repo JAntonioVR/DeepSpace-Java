@@ -7,6 +7,7 @@ package GUI;
 import deepspace.ShieldToUI;
 import deepspace.SpaceStationToUI;
 import deepspace.WeaponToUI;
+import java.awt.Component;
 import java.util.ArrayList;
 /**
  *
@@ -73,10 +74,34 @@ public class SpaceStationView extends javax.swing.JPanel {
     }
     
     ArrayList<Integer> getSelectedWeapons(){
-        return hangarView.getSelectedWeapons();
+        ArrayList<Integer> selectedWeapons=new ArrayList();
+        int i=0;
+        for(Component c:Armas.getComponents()){
+            if(((CombatElementView)c).isSelected() && ((CombatElementView)c).isWeapon()){
+                selectedWeapons.add(i);
+            }
+            i++;
+        }
+        return selectedWeapons;
     }
     
     ArrayList<Integer> getSelectedShields(){
+        ArrayList<Integer> selectedShields=new ArrayList();
+        int i=0;
+        for(Component c:Escudos.getComponents()){
+            if(((CombatElementView)c).isSelected() && !((CombatElementView)c).isWeapon()){
+                selectedShields.add(i);
+            }
+            i++;
+        }
+        return selectedShields;
+    }
+    
+    ArrayList<Integer> getSelectedWeaponsFromHangar(){
+        return hangarView.getSelectedWeapons();
+    }
+    
+    ArrayList<Integer> getSelectedShieldsFromHangar(){
         return hangarView.getSelectedShields();
     }
     /**
