@@ -75,6 +75,13 @@ public class TextUI {
                     System.exit (0);
                 }
                 break;
+                case STATIONWINSANDCONVERTS :
+                pause ("\n Has GANADO el combate. Disfruta de tu botín. Y, además, ¡¡¡¡te has transformado.!!!!");
+                if (controller.haveAWinner()) {
+                    pause ("\n\n **** **** ****  HAS GANADO LA PARTIDA  **** **** ****\n");
+                    System.exit (0);
+                }
+                break;
           }
           do {   // Until a valid next turn
               System.out.println (showStation (gameUI.getCurrentStation()));
