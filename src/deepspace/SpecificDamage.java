@@ -36,51 +36,52 @@ public class SpecificDamage extends Damage{
             minShields=s.size();
         
         ArrayList<WeaponType> tipos= new ArrayList<>();
-            int laserWeapons=0, missileWeapons=0, plasmaWeapons=0;
-            int laserW=0, missileW=0, plasmaW=0;
-            int i;
+        int laserWeapons=0, missileWeapons=0, plasmaWeapons=0;
+        int laserW=0, missileW=0, plasmaW=0;
+        int i;
             
             
-            for (i=0; i<weapons.size(); i++){
-                if (weapons.get(i)==WeaponType.LASER)
-                    laserWeapons++;
-                if (weapons.get(i)==WeaponType.MISSILE)
-                    missileWeapons++;
-                if (weapons.get(i)==WeaponType.PLASMA)
-                    plasmaWeapons++;
-            }
+        for (i=0; i<weapons.size(); i++){
+            if (weapons.get(i)==WeaponType.LASER)
+                laserWeapons++;
+            if (weapons.get(i)==WeaponType.MISSILE)
+                missileWeapons++;
+            if (weapons.get(i)==WeaponType.PLASMA)
+                plasmaWeapons++;
+        }
             
-            for (i=0; i<w.size(); i++){
-                if (w.get(i).getType()==WeaponType.LASER)
-                    laserW++;
-                if (w.get(i).getType()==WeaponType.MISSILE)
-                    missileW++;
-                if (w.get(i).getType()==WeaponType.PLASMA)
-                    plasmaW++;
-            }
+        for (i=0; i<w.size(); i++){
+            if (w.get(i).getType()==WeaponType.LASER)
+                laserW++;
+            if (w.get(i).getType()==WeaponType.MISSILE)
+                missileW++;
+            if (w.get(i).getType()==WeaponType.PLASMA)
+                plasmaW++;
+        }
             
-            int minWeaponsLaser=laserWeapons;
-            if(laserWeapons>laserW)
-                minWeaponsLaser=laserW;
+        int minWeaponsLaser=laserWeapons;
+        if(laserWeapons>laserW)
+            minWeaponsLaser=laserW;
             
-            int minWeaponsMissile=missileWeapons;
-            if(missileWeapons>missileW)
-                minWeaponsMissile=missileW;
+        int minWeaponsMissile=missileWeapons;
+        if(missileWeapons>missileW)
+           minWeaponsMissile=missileW;
             
-            int minWeaponsPlasma=plasmaWeapons;
-            if(plasmaWeapons>plasmaW)
-                minWeaponsPlasma=laserW;
+        int minWeaponsPlasma=plasmaWeapons;
+        if(plasmaWeapons>plasmaW)
+            minWeaponsPlasma=plasmaW;
             
-            for (i=0; i<minWeaponsLaser; i++) {
-                tipos.add(WeaponType.LASER);
-            }
-            for (i=0; i<minWeaponsMissile; i++) {
-                tipos.add(WeaponType.MISSILE);
-            }
-            for (i=0; i<minWeaponsPlasma; i++) {
-                tipos.add(WeaponType.PLASMA);
-            }
-            return new SpecificDamage(tipos, minShields);
+        for (i=0; i<minWeaponsLaser; i++) {
+            tipos.add(WeaponType.LASER);
+        }
+        for (i=0; i<minWeaponsMissile; i++) {
+            tipos.add(WeaponType.MISSILE);
+        }
+        for (i=0; i<minWeaponsPlasma; i++) {
+            tipos.add(WeaponType.PLASMA);
+        }
+        
+        return new SpecificDamage(tipos, minShields);
     }
 
     @Override
